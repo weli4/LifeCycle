@@ -2,7 +2,7 @@ var $workspace=$(".center-column"),
     $processes=$(".processes"),
     $process=$(".process");
 
-$(".glyphicon-folder-close").click(function(){
+$(".fa-folder").click(function(){
     var div= $(this).parent().find("div")
     if(div.css("display")!="none")
     {
@@ -13,7 +13,7 @@ $(".glyphicon-folder-close").click(function(){
         div.slideDown("fast");
     }
 })
-var trash_icon = "<span title='Delete this image' class='glyphicon glyphicon-remove'></span>";
+var trash_icon = "<i class='fa fa-trash-o'></i>";
 $(function() {
     $process.draggable({ revert: "invalid" });
 
