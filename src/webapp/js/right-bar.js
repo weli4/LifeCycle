@@ -15,34 +15,39 @@ $(".fa-folder").click(function(){
 })
 var trash_icon = "<i class='fa fa-trash-o'></i>";
 $(function() {
-    $process.draggable({ revert: "invalid" });
+
+    $process.draggable({
+        grid: [ 20,20 ],
+        cancel: "i.fa",
+        revert: "invalid",
+        cursor: "move"
+    });
 
     $workspace.droppable({
         accept: ".processes div",
-        cancel: "span.glyphicon-remove",
         drop: function( event, ui ) {
             ui.draggable.append(trash_icon).appendTo($workspace).fadeIn()
-            var $newPosX = ui.offset.left - $(this).offset().left;
-            var $newPosY = ui.offset.top - $(this).offset().top;
+
+            //var $newPosX = ui.offset.left - $(this).offset().left;
+            var $newPosX = parseInt($(this).css('width').replace("px", "")) + ui.helper.position().left;
+
+          /*  alert( ui.offset.left +'    '+ $(this).offset().left);  */
+
+            var $newPosY = ui.offset.top - $(this).offset().top- 10;
             ui.draggable.css({left: $newPosX})
         }
     });
     $processes.droppable({
-        cancel: "span.glyphicon-remove",
         accept: ".center-column div",
         drop: function( event, ui ) {
-            ui.draggable.find("span.glyphicon-remove").remove().end().detach().css({top: 0,left: 0}).appendTo($processes);
-
-
+            ui.draggable.find("i.fa-trash-o").remove().end().detach().css({top: 0,left: 0}).appendTo($processes);
         }
     });
-
-    $process.find(".glyphicon-remove").click(function(){
-        alert("ok");
-        $(this).parent().find("span.glyphicon-remove").remove();
-        $(this).parent().appendTo($processes);
-
-    })
-
+    $(".process").click(function(event){
+        var $item = $( this ),$target = $( event.target );
+        if ( $target.is( "i.fa-trash-o" ) ) {
+            $(this).find("i.fa-trash-o").remove();
+            $(this).detach().css({top: 0,left: 0}).appendTo($processes);
+        }
+    });
 });
-
