@@ -17,7 +17,7 @@ var trash_icon = "<i class='fa fa-trash-o'></i>";
 $(function() {
 
     $process.draggable({
-        grid: [ 15,15 ],
+        grid: [ 20,20 ],
         cancel: "i.fa",
         revert: "invalid",
         helper: 'clone',
