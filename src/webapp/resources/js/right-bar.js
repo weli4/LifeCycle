@@ -1,8 +1,10 @@
+$(document).ready(function() {
 var $workspace=$(".center-column"),
     $processes=$(".processes"),
     $process=$(".process");
 
 $(".fa-folder").click(function(){
+    alert("wtf")
     var div= $(this).parent().find("div")
     if(div.css("display")!="none")
     {
@@ -47,3 +49,4 @@ $(function() {
         }
     });
 });
+})
