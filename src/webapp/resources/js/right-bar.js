@@ -4,7 +4,6 @@ var $workspace=$(".center-column"),
     $process=$(".process");
 
 $(".fa-folder").click(function(){
-    alert("wtf")
     var div= $(this).parent().find("div")
     if(div.css("display")!="none")
     {
