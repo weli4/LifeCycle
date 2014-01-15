@@ -5,28 +5,54 @@
     <div class="col-md-12">header section</div>
 </div>
 <div class="row fill">
-    <div class="col-md-3 right-column">
+    <div class="col-md-2 right-column">
         Ресурсы проекта
         <div>
-            <i class="fa fa-folder"> Папка 1</i>
-            <div class="inner">
-                <p>Ресурс 1</p>
-                <p>Ресурс 2</p>
-                <p>Ресурс 3</p>
-            </div>
-        </div>
-        <div>
-            <i class="fa fa-folder"> Папка 2</i>
-            <div class="inner">
-                <p>Ресурс 1</p>
-                <p>Ресурс 2</p>
-                <p>Ресурс 3</p>
+            <i class="fa fa-folder">Стадии</i>
+            <div class="inner resources">
+                <div class="stage">
+                    <span>Концепция</span>
+                    <i class="fa fa-angle-double-right"></i>
+                    <div class="checkpoint">
+                        <div class=results>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="stage">
+                    <span>Разработка</span>
+                    <i class="fa fa-angle-double-right"></i>
+                    <div class="checkpoint"></div>
+                </div>
+                <div class="stage">
+                    <span>Производство</span>
+                    <i class="fa fa-angle-double-right"></i>
+                    <div class="checkpoint"></div>
+                </div>
+                <div class="stage">
+                    <span>Применение</span>
+                    <i class="fa fa-angle-double-right"></i>
+                    <div class="checkpoint"></div>
+                </div>
+                <div class="stage">
+                    <span>Поддержка</span>
+                    <i class="fa fa-angle-double-right"></i>
+                    <div class="checkpoint"></div>
+                </div>
+                <div class="stage">
+                    <span>Утилизация</span>
+                    <i class="fa fa-angle-double-right"></i>
+                    <div class="checkpoint"></div>
+                </div>
+
             </div>
         </div>
 
 
     </div>
-    <div id="center-column" class="col-md-6 center-column">Рабочее окно</div>
+    <div id="center-column" class="col-md-7 center-column">
+
+    </div>
     <div class="col-md-3 left-column">
         <div class="processes">Библиотека процессов
             <div class="process">

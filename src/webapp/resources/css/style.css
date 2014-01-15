@@ -49,11 +49,42 @@ html,body{
     width:100%
 }
 .inner{
-    display:none;
+
     padding-left:10px;
 }
 .process{
+    cursor: pointer;
     width:90px;
     border: 1px lightgray solid;
     border-radius:4px;
 }
+.stage{
+    margin-bottom:3px;
+}
+.stage .fa{
+    margin-left:10px;
+    cursor:pointer;
+}
+.stage span{
+    display:inline-block;
+}
+.checkpoint{
+    margin-left:-10px;
+    margin-right:10px;
+    display:inline-block
+}
+.worked{
+    display: inline-block;
+    margin-top:100px;
+}
+.worked .fa-times-circle
+{
+    position:relative;
+    top:-10px;
+    right:10px;
+}
+.results{
+    display:none;
+    width:300px;
+}
+
