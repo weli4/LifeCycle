@@ -59,6 +59,7 @@ html,body{
     border-radius:4px;
 }
 .stage{
+
     margin-bottom:3px;
 }
 .stage .fa{
@@ -84,7 +85,10 @@ html,body{
     right:10px;
 }
 .results{
+    border: 1px solid lightgray;
+
+}
+.hidden{
     display:none;
-    width:300px;
 }
 

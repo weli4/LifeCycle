@@ -23,13 +23,18 @@ $(document).ready(function() {
             $(this).addClass("worked");
             $(this).find("i.fa-angle-double-right").remove();
             $(this).find(".checkpoint").before("<i class='fa fa-times-circle'></i>");
-            $(this).find(".checkpoint").append("<i class='fa fa-arrows-h'></i>");
+            $(this).find(".checkpoint").append("<i class='fa fa-chevron-down'></i>");
         }
         if ( $target.is( "i.fa-times-circle" ) ) {
-            $(this).find("i.fa-times-circle").remove().end().find("i.fa-arrows-h").remove().end().append("<i class='fa fa-angle-double-right'></i>");
+            $(this).find("i.fa-times-circle").remove().end().find("i.fa-chevron-down").remove().end().append("<i class='fa fa-angle-double-right'></i>");
             $(this).removeClass("worked").detach().appendTo($rightColumn.find(".resources"));
         }
-        if ( $target.is( "i.fa-arrows-h" ) ) {
+        if ( $target.is( "i.fa-chevron-down" ) ) {
+            var height = $(this).find(".results").height()+20;
+            var marginTop = $(this).css("margin-top").replace("px", "");
+            $(this).find(".results").css({position: 'relative',left: 20, top: height });
+            $(this).find(".results").show("blind");
+            $(this).css("margin-top",marginTop-height);
 
         }
     });

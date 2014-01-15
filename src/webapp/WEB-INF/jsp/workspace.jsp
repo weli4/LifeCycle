@@ -14,8 +14,11 @@
                     <span>Концепция</span>
                     <i class="fa fa-angle-double-right"></i>
                     <div class="checkpoint">
-                        <div class=results>
-
+                        <div class="results" style="display:none">
+                            <p>Результат 1</p>
+                            <p>Результат 2</p>
+                            <p>Результат 3</p>
+                            <p>Результат 4</p>
                         </div>
                     </div>
                 </div>
