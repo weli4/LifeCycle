@@ -2,12 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
 
-Hello!
-<br/>
+Maxtix page!
 
-<a href="/workspace" accesskey=""> Workspace </a>
-<br/>
-<a href="/saati" >Saati</a>
 
 
 

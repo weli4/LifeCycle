@@ -2,12 +2,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
 
-Hello!
-<br/>
+Welkome to Saati main page!   <br/>
+Choose mode:                       <br/>
 
-<a href="/workspace" accesskey=""> Workspace </a>
-<br/>
-<a href="/saati" >Saati</a>
+<a href="/saati/single" accesskey=""> Single </a> <br/>
+<a href="" >Multi</a>
 
 
 
