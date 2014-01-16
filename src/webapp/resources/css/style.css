@@ -65,6 +65,7 @@ html,body{
 .stage .fa{
     margin-left:10px;
     cursor:pointer;
+    position:relative;
 }
 .stage span{
     display:inline-block;
@@ -85,7 +86,9 @@ html,body{
     right:10px;
 }
 .results{
+    overflow:hidden;
     border: 1px solid lightgray;
+    display:inline-block;
 
 }
 .hidden{

@@ -17,34 +17,39 @@ $(document).ready(function() {
         }
     });
     $(".stage").click(function(event){
+        var rHeight = $(this).find(".results").height();
+        var rWidth = $(this).find(".results").width();
         var $item = $( this ),$target = $( event.target );
         if ( $target.is( "i.fa-angle-double-right" ) ) {
-            $(this).detach().appendTo($workspace).fadeIn();
-            $(this).addClass("worked");
+            $(this).addClass("worked").detach().appendTo($workspace).fadeIn();
             $(this).find("i.fa-angle-double-right").remove();
-            $(this).find(".checkpoint").before("<i class='fa fa-times-circle'></i>");
-            $(this).find(".checkpoint").append("<i class='fa fa-chevron-down'></i>");
-        }
-        if ( $target.is( "i.fa-times-circle" ) ) {
-            $(this).find("i.fa-times-circle").remove().end().find("i.fa-chevron-down").remove().end().append("<i class='fa fa-angle-double-right'></i>");
-            $(this).removeClass("worked").detach().appendTo($rightColumn.find(".resources"));
-        }
-        if ( $target.is( "i.fa-chevron-down" ) ) {
-            var height = $(this).find(".results").height()+20;
-            var marginTop = $(this).css("margin-top").replace("px", "");
-            $(this).find(".results").css({position: 'relative',left: 20, top: height });
-            $(this).find(".results").show("blind");
-            $(this).css("margin-top",marginTop-height);
+            $(this).find(".checkpoint").before("<i class='fa fa-times-circle'></i>").append("<i class='fa fa-chevron-up'></i>");
 
+        }
+        if ($target.is( "i.fa-times-circle" )) {
+            $(this).find("i.fa").remove().end().append("<i class='fa fa-angle-double-right'></i>");
+            $(this).removeClass("worked").detach().appendTo($rightColumn.find(".resources")).end().find(".results").hide().end().css("margin-top", 0);
+        }
+        if ($target.is( "i.fa-chevron-up" )) {
+            $(this).find(".results").width(rWidth+5);
+            var marginTop = $(this).css("margin-top").replace("px", "");
+            $(this).css("margin-top",marginTop-rHeight).find("i.fa-chevron-up")//.css({left: -width});
+            $(this).find(".results").show("blind");
+            //$(this).find(".checkpoint").css({width: rWidth});
+            $(this).find(".fa-chevron-up").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            return;
+        }
+        if($target.is("i.fa-chevron-down")) {
+            $(this).find(".results").hide("blind");
+            $(this).find(".checkpoint").animate({width: $("i.fa-chevron-down").width()+10}, 500);
+            $(this).find(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-up");
         }
     });
 
 
     var trash_icon = "<i class='fa fa-trash-o'></i>";
     $(function() {
-        /*$stage.draggable({
-         cursor: "move"
-         });  */
+
         $process.draggable({
             grid: [ 20,20 ],
             cancel: "i.fa",
@@ -52,7 +57,6 @@ $(document).ready(function() {
             helper: 'clone',
             cursor: "move"
         });
-
         $workspace.droppable({
             accept: ".processes div",
             drop: function( event, ui ) {

@@ -8,11 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Arrays;
 
-/**
- * User: Austry
- * Date: 15.01.14
- * Time: 16:23
- */
+
 @Controller
 @RequestMapping("/saati")
 public class SaatiController {
