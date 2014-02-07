@@ -22,32 +22,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="stage">
-                    <span>Разработка</span>
-                    <i class="fa fa-angle-double-right"></i>
-                    <div class="checkpoint"></div>
-                </div>
-                <div class="stage">
-                    <span>Производство</span>
-                    <i class="fa fa-angle-double-right"></i>
-                    <div class="checkpoint"></div>
-                </div>
-                <div class="stage">
-                    <span>Применение</span>
-                    <i class="fa fa-angle-double-right"></i>
-                    <div class="checkpoint"></div>
-                </div>
-                <div class="stage">
-                    <span>Поддержка</span>
-                    <i class="fa fa-angle-double-right"></i>
-                    <div class="checkpoint"></div>
-                </div>
-                <div class="stage">
-                    <span>Утилизация</span>
-                    <i class="fa fa-angle-double-right"></i>
-                    <div class="checkpoint"></div>
-                </div>
 
+                <div class="stage">
+                    <div class="info">
+                        <span>Концепция</span>
+                        <i class="fa fa-angle-double-right"></i>
+                        <div class="stage_process">
+                            Процессы:
+                        </div>
+                    </div>
+                    <div class="results">
+                        <span class="show">Результаты</span>
+                        <div class="data">
+                            <p>Результат1</p>
+                            <p>Результат2</p>
+                            <p>Результат3</p>
+                            <p>Результат4</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

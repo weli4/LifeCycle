@@ -33,8 +33,8 @@ $(document).ready(function() {
         if ($target.is( "i.fa-chevron-up" )) {
             $(this).find(".results").width(rWidth+5);
             var marginTop = $(this).css("margin-top").replace("px", "");
-            $(this).css("margin-top",marginTop-rHeight).find("i.fa-chevron-up")//.css({left: -width});
-            $(this).find(".results").show("blind");
+           // $(this).css("margin-top",rHeight-marginTop).find("i.fa-chevron-up")//.css({left: -width});
+            $(this).find(".results").show()//.css("margin-top",rHeight-marginTop);
             //$(this).find(".checkpoint").css({width: rWidth});
             $(this).find(".fa-chevron-up").removeClass("fa-chevron-up").addClass("fa-chevron-down");
             return;
@@ -45,11 +45,31 @@ $(document).ready(function() {
             $(this).find(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-up");
         }
     });
+    $(".results").click(function(event)
+    {
+        $target = $( event.target );
+        if ($target.is("span.show")) {
+            $(this).find("span").removeClass("show").addClass("closeUp");
+            $(this).find("div.data").slideDown();
+            return;
+        }
+        if ($target.is("span.closeUp")) {
+            $(this).find("span").removeClass("closeUp").addClass("show");
+            $(".results").find("div.data").slideUp();
+            return;
+        }
+    })
 
 
     var trash_icon = "<i class='fa fa-trash-o'></i>";
     $(function() {
+        $(".stage_process").droppable({
+            accept: ".processes div",
+            drop: function( event, ui ) {
+                ui.draggable.append(trash_icon).appendTo( $(".stage_process")).fadeIn()
 
+            }
+        });
         $process.draggable({
             grid: [ 20,20 ],
             cancel: "i.fa",

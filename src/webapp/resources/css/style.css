@@ -59,6 +59,7 @@ html,body{
     border-radius:4px;
 }
 .stage{
+    height:200px;
 
     margin-bottom:3px;
 }
@@ -68,12 +69,14 @@ html,body{
     position:relative;
 }
 .stage span{
-    display:inline-block;
+    display:inline-table;
 }
 .checkpoint{
     margin-left:-10px;
     margin-right:10px;
-    display:inline-block
+    display:inline-block;
+
+    height:20px;
 }
 .worked{
     display: inline-block;
@@ -85,13 +88,37 @@ html,body{
     top:-10px;
     right:10px;
 }
-.results{
-    overflow:hidden;
-    border: 1px solid lightgray;
-    display:inline-block;
 
+
+.results{
+
+    display:inline-table;
 }
 .hidden{
     display:none;
 }
 
+.info{
+
+    display:inline-table;
+}
+.results{
+
+    display:inline-table;
+}
+.results .data{
+    display:none;
+    margin-top:10px;
+}
+.stage{
+
+    height:100px;
+}
+.results span{
+    cursor: pointer
+}
+.stage_process{
+    min-height:50px;
+    min-width: 100px;
+    border: 1px dotted darkblue;
+}
