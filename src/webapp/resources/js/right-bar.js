@@ -22,13 +22,17 @@ $(document).ready(function() {
         var $item = $( this ),$target = $( event.target );
         if ( $target.is( "i.fa-angle-double-right" ) ) {
             $(this).addClass("worked").detach().appendTo($workspace).fadeIn();
-            $(this).find("i.fa-angle-double-right").remove();
-            $(this).find(".checkpoint").before("<i class='fa fa-times-circle'></i>").append("<i class='fa fa-chevron-up'></i>");
+            $(this).find("i.fa-angle-double-right").removeClass("fa-angle-double-right").addClass("fa-times-circle");
+            //$(this).find(".checkpoint").before("<i class='fa fa-times-circle'></i>").append("<i class='fa fa-chevron-up'></i>");
+            $(this).find(".stage_process").removeClass("hide").end().find(".results").removeClass("hide");
+            return;
 
         }
         if ($target.is( "i.fa-times-circle" )) {
-            $(this).find("i.fa").remove().end().append("<i class='fa fa-angle-double-right'></i>");
-            $(this).removeClass("worked").detach().appendTo($rightColumn.find(".resources")).end().find(".results").hide().end().css("margin-top", 0);
+            $(this).find("i.fa-times-circle").removeClass("fa-times-circle").addClass("fa-angle-double-right");
+            $(this).removeClass("worked").detach().appendTo($rightColumn.find(".resources")).end();
+            $(this).find(".stage_process").addClass("hide").end().find(".results").addClass("hide");
+            return;
         }
         if ($target.is( "i.fa-chevron-up" )) {
             $(this).find(".results").width(rWidth+5);
@@ -43,6 +47,7 @@ $(document).ready(function() {
             $(this).find(".results").hide("blind");
             $(this).find(".checkpoint").animate({width: $("i.fa-chevron-down").width()+10}, 500);
             $(this).find(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            return;
         }
     });
     $(".results").click(function(event)
@@ -55,7 +60,7 @@ $(document).ready(function() {
         }
         if ($target.is("span.closeUp")) {
             $(this).find("span").removeClass("closeUp").addClass("show");
-            $(".results").find("div.data").slideUp();
+            $(this).find("div.data").slideUp();
             return;
         }
     })
@@ -66,7 +71,7 @@ $(document).ready(function() {
         $(".stage_process").droppable({
             accept: ".processes div",
             drop: function( event, ui ) {
-                ui.draggable.append(trash_icon).appendTo( $(".stage_process")).fadeIn()
+                ui.draggable.append(trash_icon).appendTo( $(this)).fadeIn()
 
             }
         });
@@ -77,7 +82,7 @@ $(document).ready(function() {
             helper: 'clone',
             cursor: "move"
         });
-        $workspace.droppable({
+        /*$workspace.droppable({
             accept: ".processes div",
             drop: function( event, ui ) {
                 ui.draggable.append(trash_icon).appendTo($workspace).fadeIn()
@@ -85,7 +90,7 @@ $(document).ready(function() {
                 var $newPosY = ui.offset.top - $(this).offset().top;
                 ui.draggable.css({position: 'absolute',left: $newPosX, top: $newPosY })
             }
-        });
+        }); */
         $processes.droppable({
             accept: ".center-column div",
             drop: function( event, ui ) {

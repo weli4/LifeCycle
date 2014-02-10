@@ -10,28 +10,107 @@
         <div>
             <i class="fa fa-folder">Стадии</i>
             <div class="inner resources">
+
                 <div class="stage">
-                    <span>Концепция</span>
-                    <i class="fa fa-angle-double-right"></i>
-                    <div class="checkpoint">
-                        <div class="results" style="display:none">
-                            <p>Результат 1</p>
-                            <p>Результат 2</p>
-                            <p>Результат 3</p>
-                            <p>Результат 4</p>
+                    <div class="info">
+                        <span>Концепция</span>
+                        <i class="fa fa-angle-double-right"></i>
+                        <div class="stage_process hide">
+                            Процессы:
+                        </div>
+                    </div>
+                    <div class="results hide">
+                        <span class="show">Результаты</span>
+                        <div class="data">
+                            <p>Результат1</p>
+                            <p>Результат2</p>
+                            <p>Результат3</p>
+                            <p>Результат4</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="stage">
                     <div class="info">
-                        <span>Концепция</span>
+                        <span>Разработка</span>
                         <i class="fa fa-angle-double-right"></i>
-                        <div class="stage_process">
+                        <div class="stage_process hide">
                             Процессы:
                         </div>
                     </div>
-                    <div class="results">
+                    <div class="results hide">
+                        <span class="show">Результаты</span>
+                        <div class="data">
+                            <p>Результат1</p>
+                            <p>Результат2</p>
+                            <p>Результат3</p>
+                            <p>Результат4</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stage">
+                    <div class="info">
+                        <span>Производство</span>
+                        <i class="fa fa-angle-double-right"></i>
+                        <div class="stage_process hide">
+                            Процессы:
+                        </div>
+                    </div>
+                    <div class="results hide">
+                        <span class="show">Результаты</span>
+                        <div class="data">
+                            <p>Результат1</p>
+                            <p>Результат2</p>
+                            <p>Результат3</p>
+                            <p>Результат4</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stage">
+                    <div class="info">
+                        <span>Установка</span>
+                        <i class="fa fa-angle-double-right"></i>
+                        <div class="stage_process hide">
+                            Процессы:
+                        </div>
+                    </div>
+                    <div class="results hide">
+                        <span class="show">Результаты</span>
+                        <div class="data">
+                            <p>Результат1</p>
+                            <p>Результат2</p>
+                            <p>Результат3</p>
+                            <p>Результат4</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stage">
+                    <div class="info">
+                        <span>Поддержка</span>
+                        <i class="fa fa-angle-double-right"></i>
+                        <div class="stage_process hide">
+                            Процессы:
+                        </div>
+                    </div>
+                    <div class="results hide">
+                        <span class="show">Результаты</span>
+                        <div class="data">
+                            <p>Результат1</p>
+                            <p>Результат2</p>
+                            <p>Результат3</p>
+                            <p>Результат4</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stage">
+                    <div class="info">
+                        <span>Утилизация</span>
+                        <i class="fa fa-angle-double-right"></i>
+                        <div class="stage_process hide">
+                            Процессы:
+                        </div>
+                    </div>
+                    <div class="results hide">
                         <span class="show">Результаты</span>
                         <div class="data">
                             <p>Результат1</p>
@@ -56,6 +135,12 @@
             </div>
             <div class="process">
                 Процесс 2
+            </div>
+            <div class="process">
+                Процесс 3
+            </div>
+            <div class="process">
+                Процесс 4
             </div>
         </div>
         <div class="properties">Свойства объекта</div>

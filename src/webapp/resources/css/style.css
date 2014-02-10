@@ -54,13 +54,12 @@ html,body{
 }
 .process{
     cursor: pointer;
-    width:90px;
+    width:100px;
     border: 1px lightgray solid;
     border-radius:4px;
+    overflow:hidden:
 }
 .stage{
-    height:200px;
-
     margin-bottom:3px;
 }
 .stage .fa{
@@ -75,12 +74,12 @@ html,body{
     margin-left:-10px;
     margin-right:10px;
     display:inline-block;
-
     height:20px;
 }
 .worked{
     display: inline-block;
-    margin-top:100px;
+    margin-left:15px;
+    margin-top:50px;
 }
 .worked .fa-times-circle
 {
@@ -88,14 +87,12 @@ html,body{
     top:-10px;
     right:10px;
 }
-
-
 .results{
 
     display:inline-table;
 }
 .hidden{
-    display:none;
+    display:none !important;
 }
 
 .info{
@@ -103,22 +100,20 @@ html,body{
     display:inline-table;
 }
 .results{
-
+    margin-left:10px;
     display:inline-table;
 }
 .results .data{
     display:none;
     margin-top:10px;
 }
-.stage{
-
-    height:100px;
-}
 .results span{
-    cursor: pointer
+    cursor: pointer;
+    font-size:10px;
+    text-decoration: underline;
 }
 .stage_process{
     min-height:50px;
-    min-width: 100px;
+    min-width: 120px;
     border: 1px dotted darkblue;
 }
