@@ -1,4 +1,4 @@
-package ru.mirea.fk.is.controllers;
+package controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,6 @@ public class IndexController {
         m.addObject("text","text");
         System.out.println("request '/index'");
         return m;
-
     }
 
 

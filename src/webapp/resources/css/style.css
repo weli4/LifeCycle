@@ -16,6 +16,9 @@ html,body{
 
 }
 .center-column{
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
 
 }
 .left-column{

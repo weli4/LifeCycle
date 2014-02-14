@@ -13,4 +13,8 @@
 </head>
 <body>
 <div class="container">
+    <div class="row header">
+        <a href="#">Модель ЖЦ</a>
+        <a href="#">Выбор Альтернатив</a>
+    </div>
 

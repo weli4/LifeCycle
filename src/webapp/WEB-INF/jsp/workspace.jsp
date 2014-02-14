@@ -1,16 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
+
 <script src="/resources/js/right-bar.js"></script>
-<div class="row header">
-    <div class="col-md-12">header section</div>
-</div>
+
 <div class="row fill">
     <div class="col-md-2 right-column">
         Ресурсы проекта
         <div>
             <i class="fa fa-folder">Стадии</i>
             <div class="inner resources">
-
                 <div class="stage">
                     <div class="info">
                         <span>Концепция</span>
