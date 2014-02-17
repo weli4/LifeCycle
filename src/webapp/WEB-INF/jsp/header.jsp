@@ -14,7 +14,7 @@
 <body>
 <div class="container">
     <div class="row header">
-        <a href="#">Модель ЖЦ</a>
-        <a href="#">Выбор Альтернатив</a>
+        <button type="button" class="btn btn-primary">Модель ЖЦ</button>
+        <button type="button" class="btn btn-primary">Выбор Альтернатив</button>
     </div>
 

@@ -16,6 +16,10 @@ $(document).ready(function() {
             div.slideDown("fast");
         }
     });
+    $(".process").hover(function(){
+        $(".properties").html($(this).find(".description").html());
+
+    })
     $(".stage").click(function(event){
         var rHeight = $(this).find(".results").height();
         var rWidth = $(this).find(".results").width();
@@ -23,23 +27,20 @@ $(document).ready(function() {
         if ( $target.is( "i.fa-angle-double-right" ) ) {
             $(this).addClass("worked").detach().appendTo($workspace).fadeIn();
             $(this).find("i.fa-angle-double-right").removeClass("fa-angle-double-right").addClass("fa-times-circle");
-            //$(this).find(".checkpoint").before("<i class='fa fa-times-circle'></i>").append("<i class='fa fa-chevron-up'></i>");
             $(this).find(".stage_process").removeClass("hide").end().find(".results").removeClass("hide");
             return;
-
         }
         if ($target.is( "i.fa-times-circle" )) {
-            $(this).find("i.fa-times-circle").removeClass("fa-times-circle").addClass("fa-angle-double-right");
+            $(this).find("i.fa-times-circle").removeClass("fa-times-circle").addClass("fa-angle-double-right")
             $(this).removeClass("worked").detach().appendTo($rightColumn.find(".resources")).end();
             $(this).find(".stage_process").addClass("hide").end().find(".results").addClass("hide");
+            $(this).removeClass("active");
             return;
         }
         if ($target.is( "i.fa-chevron-up" )) {
             $(this).find(".results").width(rWidth+5);
             var marginTop = $(this).css("margin-top").replace("px", "");
-           // $(this).css("margin-top",rHeight-marginTop).find("i.fa-chevron-up")//.css({left: -width});
-            $(this).find(".results").show()//.css("margin-top",rHeight-marginTop);
-            //$(this).find(".checkpoint").css({width: rWidth});
+            $(this).find(".results").show();
             $(this).find(".fa-chevron-up").removeClass("fa-chevron-up").addClass("fa-chevron-down");
             return;
         }
@@ -47,6 +48,11 @@ $(document).ready(function() {
             $(this).find(".results").hide("blind");
             $(this).find(".checkpoint").animate({width: $("i.fa-chevron-down").width()+10}, 500);
             $(this).find(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            return;
+        }
+        if($target.is(".stage.worked")) {
+            $(".active").removeClass("active");
+            $(this).addClass("active");
             return;
         }
     });
@@ -71,8 +77,7 @@ $(document).ready(function() {
         $(".stage_process").droppable({
             accept: ".processes div",
             drop: function( event, ui ) {
-                ui.draggable.append(trash_icon).appendTo( $(this)).fadeIn()
-
+                ui.draggable.append(trash_icon).appendTo( $(this)).fadeIn();
             }
         });
         $process.draggable({
