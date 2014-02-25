@@ -13,4 +13,8 @@
 </head>
 <body>
 <div class="container">
+    <div class="row header">
+        <button type="button" class="btn btn-primary">Модель ЖЦ</button>
+        <button type="button" class="btn btn-primary">Выбор Альтернатив</button>
+    </div>
 

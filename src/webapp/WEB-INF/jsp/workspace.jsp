@@ -1,16 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
+
 <script src="/resources/js/right-bar.js"></script>
-<div class="row header">
-    <div class="col-md-12">header section</div>
-</div>
+
 <div class="row fill">
     <div class="col-md-2 right-column">
-        Ресурсы проекта
         <div>
             <i class="fa fa-folder">Стадии</i>
             <div class="inner resources">
-
                 <div class="stage">
                     <div class="info">
                         <span>Концепция</span>
@@ -29,7 +27,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="stage">
                     <div class="info">
                         <span>Разработка</span>
@@ -122,28 +119,68 @@
                 </div>
             </div>
         </div>
-
-
     </div>
     <div id="center-column" class="col-md-7 center-column">
-
     </div>
     <div class="col-md-3 left-column">
-        <div class="processes">Библиотека процессов
-            <div class="process">
-                Процесс 1
+        <div class="processes">
+            <div>
+                <i class="fa fa-folder">Технические процессы</i>
+                <div class="inner resources">
+                    <div class="process">
+                        Процесс 1
+                        <div class="description hide">
+                            Описание
+                            лалала
+                        </div>
+                    </div>
+                    <div class="process">
+                        Процесс 2
+                        <div class="description hide">
+                         dgdfgdfgdfgdfg
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="process">
-                Процесс 2
+            <div>
+                <i class="fa fa-folder">Процессы</i>
+                <div class="inner resources" style="display:none">
+                    <div class="process">
+                        Процесс 1
+                        <div class="description hide">
+                            423463564545745
+                        </div>
+                    </div>
+                    <div class="process">
+                        Процесс 2
+                    </div>
+                </div>
             </div>
-            <div class="process">
-                Процесс 3
+            <div>
+                <i class="fa fa-folder">Процессы</i>
+                <div class="inner resources" style="display:none">
+                    <div class="process">
+                        Процесс 1
+                    </div>
+                    <div class="process">
+                        Процесс 2
+                    </div>
+                </div>
             </div>
-            <div class="process">
-                Процесс 4
+            <div>
+                <i class="fa fa-folder">Процессы</i>
+                <div class="inner resources" style="display:none">
+                    <div class="process">
+                        Процесс 1
+                    </div>
+                    <div class="process">
+                        Процесс 2
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="properties">Свойства объекта</div>
+        <div class="properties">
+        </div>
     </div>
 </div>
 <div class="row footer">
