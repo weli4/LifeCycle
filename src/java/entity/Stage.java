@@ -10,7 +10,7 @@ import java.util.List;
 public class Stage extends AbstractEntity{
     private String name;
     private List<Process> process;
-    private Project project;
+    private Model model;
 
     public String getName() {
         return name;
@@ -28,11 +28,11 @@ public class Stage extends AbstractEntity{
         this.process = process;
     }
     @ManyToOne(fetch = FetchType.LAZY)
-    public Project getProject() {
-        return project;
+    public Model getModel() {
+        return model;
     }
 
-    public void setProject(Project project) {
-        this.project = project;
+    public void setModel(Model model) {
+        this.model = model;
     }
 }
