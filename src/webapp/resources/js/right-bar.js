@@ -2,8 +2,8 @@ $(document).ready(function() {
     var $workspace=$(".center-column"),
         $processes=$(".processes"),
         $process=$(".process");
-        $stage=$(".stage");
-        $rightColumn=$(".right-column");
+    $stage=$(".stage");
+    $rightColumn=$(".right-column");
 
     $(".fa-folder").click(function(){
         var div= $(this).parent().find(".inner")
@@ -18,21 +18,32 @@ $(document).ready(function() {
     });
     $(".process").hover(function(){
         $(".properties").html($(this).find(".description").html());
+    });
+    $(".model").click(function(event){
+        $target = $( event.target );
+        if($target.is("i.fa-angle-double-right")) {
+            $(this).detach().appendTo($workspace).fadeIn();
+            $(this).find("i.fa-angle-double-right").remove();
+            $(this).find("span").hide();
+            $(this).find("div.stage").removeClass("hide").show();
+            $(this).find("div.stage span").removeClass("hide").show();
+            return;
+        }
+    });
 
-    })
     $(".stage").click(function(event){
         var rHeight = $(this).find(".results").height();
         var rWidth = $(this).find(".results").width();
         var $item = $( this ),$target = $( event.target );
         if ( $target.is( "i.fa-angle-double-right" ) ) {
-            $(this).addClass("worked").detach().appendTo($workspace).fadeIn();
+            $(this).addClass("worked").detach().appendTo($(".center-column .model")).fadeIn();
             $(this).find("i.fa-angle-double-right").removeClass("fa-angle-double-right").addClass("fa-times-circle");
             $(this).find(".stage_process").removeClass("hide").end().find(".results").removeClass("hide");
             return;
         }
         if ($target.is( "i.fa-times-circle" )) {
             $(this).find("i.fa-times-circle").removeClass("fa-times-circle").addClass("fa-angle-double-right")
-            $(this).removeClass("worked").detach().appendTo($rightColumn.find(".resources")).end();
+            $(this).removeClass("worked").detach().appendTo($rightColumn.find(".stages")).end();
             $(this).find(".stage_process").addClass("hide").end().find(".results").addClass("hide");
             $(this).removeClass("active");
             return;
@@ -50,9 +61,13 @@ $(document).ready(function() {
             $(this).find(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-up");
             return;
         }
-        if($target.is(".stage.worked")) {
+        if($target.is(".info")) {
             $(".active").removeClass("active");
             $(this).addClass("active");
+            if($target.is(".info.conception"))
+            {
+                $(".conception").addClass("active");
+            }
             return;
         }
     });
@@ -69,7 +84,7 @@ $(document).ready(function() {
             $(this).find("div.data").slideUp();
             return;
         }
-    })
+    });
 
 
     var trash_icon = "<i class='fa fa-trash-o'></i>";
@@ -88,14 +103,14 @@ $(document).ready(function() {
             cursor: "move"
         });
         /*$workspace.droppable({
-            accept: ".processes div",
-            drop: function( event, ui ) {
-                ui.draggable.append(trash_icon).appendTo($workspace).fadeIn()
-                var $newPosX = parseInt($(this).css('width').replace("px", "")) + ui.helper.position().left;
-                var $newPosY = ui.offset.top - $(this).offset().top;
-                ui.draggable.css({position: 'absolute',left: $newPosX, top: $newPosY })
-            }
-        }); */
+         accept: ".processes div",
+         drop: function( event, ui ) {
+         ui.draggable.append(trash_icon).appendTo($workspace).fadeIn()
+         var $newPosX = parseInt($(this).css('width').replace("px", "")) + ui.helper.position().left;
+         var $newPosY = ui.offset.top - $(this).offset().top;
+         ui.draggable.css({position: 'absolute',left: $newPosX, top: $newPosY })
+         }
+         }); */
         $processes.droppable({
             accept: ".center-column div",
             drop: function( event, ui ) {
@@ -110,5 +125,4 @@ $(document).ready(function() {
             }
         });
     });
-
-})
+});
