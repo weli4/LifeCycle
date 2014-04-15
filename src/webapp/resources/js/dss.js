@@ -56,7 +56,6 @@ $(document).ready(function() {
 
 
             $('#legend_helper').text(text);
-            console.log("вызов тестируемого метода. Результат:"+getMatrixForPost());
 
         });
     //WORKS!!!!!
@@ -81,6 +80,7 @@ $(document).ready(function() {
 
             //Устаналиваем Вектора
             fillVectors(data.vector);
+
             //Лямда
             $('#lambda').text(data.lambda);
             //ИС
@@ -127,7 +127,6 @@ $(document).ready(function() {
         for(var i=0; i<matrix_size; i++){
             resultString = resultString.concat("&matrix=");
             for(var j=0; j<matrix_size; j++){
-                console.log(getValue([i,j]));
                 resultString = resultString.concat(getValue([i,j]));
                 if(j!==matrix_size-1){
                     resultString = resultString.concat(',');
