@@ -28,20 +28,15 @@ public class SaatiController {
     @RequestMapping("/single")
     public ModelAndView firstStep(){
         ModelAndView modelAndView = new ModelAndView("/saati/alt_choose");
-        modelAndView.addObject("mode","single");
+        modelAndView.addObject("headerText","Выберите альтернативы");
         return modelAndView;
     }
-    @RequestMapping("/dynamic")
-    public ModelAndView dynamicFirstStep(){
-        ModelAndView modelAndView = new ModelAndView("/saati/alt_choose");
-        modelAndView.addObject("mode","dynamic");
-        return modelAndView;
-    }
+
 
     @RequestMapping(value = "/single",method = RequestMethod.POST)
     public ModelAndView singleMaxtixFill(@RequestParam(value = "input_alt") String[] alternativesArray){
         ModelAndView m = new ModelAndView("saati/matrix");
-
+        m.addObject("headerText", "Простое сравнение альтернатив");
         m.addObject("alternativesArray", alternativesArray);
         m.addObject("alternativesNumber", alternativesArray.length);
         System.out.println(Arrays.toString(alternativesArray));
@@ -50,17 +45,7 @@ public class SaatiController {
         return m;
     }
 
-    @RequestMapping(value = "/dynamic",method = RequestMethod.POST)
-    public ModelAndView dynamicMaxtixFill(@RequestParam(value = "input_alt") String[] alternativesArray){
-        ModelAndView m = new ModelAndView("saati/dynamic_matrix");
 
-        m.addObject("alternativesArray", alternativesArray);
-        m.addObject("alternativesNumber", alternativesArray.length);
-        System.out.println(Arrays.toString(alternativesArray));
-
-
-        return m;
-    }
 
 
     @RequestMapping(value = "/calc", method = RequestMethod.POST)
@@ -85,89 +70,6 @@ public class SaatiController {
 
         return saatiSolver.getSolveAsJSON();
     }
-    @RequestMapping(value ="/dynamic/show-result",method = RequestMethod.POST)
-    public @ResponseBody String  showGraf(@RequestParam(value = "dynamic")String dynamic,@RequestParam(value = "matrix") String[][] input,@RequestParam(value = "step") String step,
-                                          @RequestParam(value = "low") String lowLimit, @RequestParam(value = "high") String highLimit,@RequestParam(value = "b") String b,
-                                          @RequestParam(value = "a") String a){
-        log.info("SHOWGRAF");
-        log.info(dynamic.toString());
-        log.info(step.toString());
-        log.info(lowLimit.toString());
-        log.info(highLimit.toString());
-        log.info(a);
-        log.info(b);
-
-        int x = Character.getNumericValue(dynamic.charAt(7));
-        int y = Character.getNumericValue(dynamic.charAt(10));
-        log.info(x+"    "+y);
-
-
-        int matrixSize = input[0].length;
-
-        int count = 0;
-        for(double value=Double.parseDouble(lowLimit); value<=Double.parseDouble(highLimit); value+=Double.parseDouble(step)){
-            count++;
-        }
-
-
-        double[][] outArray = new double[matrixSize][count];
-        double[] outParametrArray = new double[count];
-
-        double[][] doubleInputArray = new double[matrixSize][matrixSize];
-        for(int i=0; i<matrixSize; i++){
-            for(int j=0; j<matrixSize; j++){
-                doubleInputArray[i][j] = getDoubleNumber(input[i][j]);
-
-            }
-
-        }
-        int counter = 0;
-        for(double value=Double.parseDouble(lowLimit); value<=Double.parseDouble(highLimit); value+=Double.parseDouble(step)){
-            doubleInputArray[x][y]=Double.parseDouble(a)*value+Double.parseDouble(b);
-            doubleInputArray[y][x]=1/(Double.parseDouble(a)*value+Double.parseDouble(b));
-            SimpleSaatiSolver saatiSolver = new SimpleSaatiSolver(doubleInputArray);
-            double[] tempKoef = saatiSolver.getDoubleVector();
-            for(int j=0; j<matrixSize; j++){
-                outArray[j][counter] = tempKoef[j];
-            }
-
-            outParametrArray[counter] = value;
-            counter++         ;
-
-        }
-
-        StringBuffer sb = new StringBuffer("{");
-        //sb.append("\"datasets\":{");
-        for(int i=0; i<matrixSize ; i++){
-            sb.append("\"vector"+i+"\":{\"data\":[");
-            for(int j=0; j<counter; j++){
-                sb.append("[");
-                sb.append(outParametrArray[j]);
-                sb.append(",");
-                sb.append(outArray[i][j]);
-                sb.append("]");
-                if(j!=counter-1){
-                    sb.append(",");
-
-                }
-
-            }
-            sb.append("]}");
-            if(i!=matrixSize-1){
-                sb.append(",");
-
-            }
-
-        }
-        sb.append("}");
-
-
-
-         //"{\"vector\":[[0,1],[1,3],[2,4]],\"lambda\":2,\"cons_index\":0,\"attit_cons\":0}"
-        return sb.toString();
-
-    }
-
 
     private double getDoubleNumber(String str){
         if(str.contains("/")){
@@ -184,5 +86,4 @@ public class SaatiController {
 
 
     }
-
 }

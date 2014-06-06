@@ -6,12 +6,9 @@
 <script type="text/javascript" src="<c:url value="/resources/js/dss.js"/>"> </script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.keyfilter-1.7.min.js"/>"> </script>
 <script type="text/javascript" src="<c:url value="/resources/js/saati.js"/>"> </script>
+<script type="text/javascript" src="<c:url value="/resources/js/common.js"/>"> </script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.growl.js"/>"> </script>
 
-
-Maxtix page!
-
-${alternativesArray[0]}
-${alternativesArray[1]}
     <br />
 <div id="dop_bg">
     <div class="up_div">
@@ -29,11 +26,17 @@ ${alternativesArray[1]}
             <div class="cn r"></div>
         </div>
         <div class="content_box" style="padding-left: 30px;">
-            <script language="JavaScript">
-                var CATEGORY = -2;
-            </script>
-            <h2>Простое сравнение альтернатив</h2>
 
+            <h2>${headerText}</h2>
+            <br/>
+            <div id="steps_panel" hidden="${multiModeFlag}">
+            Шаг
+            <span id="step_number"></span>
+            из
+            <span id="step_count">${max_step}</span>
+            :
+            <span id="step_name"></span>
+            </div>
             <br /><br />
             Для указания уровня приоритета используйте числа от 1/9 до 9.
             <br /><br />
@@ -74,6 +77,8 @@ ${alternativesArray[1]}
                 </div>
                 <br />
                 <input type="button" name="calc_matrix" value="Рассчитать"/>
+                <input type="button" name="next" value="Далее" hidden="true"   />
+                <a href="/saati//multiple/result"><input type="button" name="end" value="Завершить" hidden="true"   /></a>
             </div>
             <div id="legend" style="padding-left: 70px;float:left">
                 <b>Легенда:</b>
@@ -114,6 +119,7 @@ ${alternativesArray[1]}
             &copy;&nbsp;&nbsp;МИРЭА
         </div>
     </div>
+    <div hidden="true" id="multi_mode_flag">${multiModeFlag}</div>
 </div>
 
 

@@ -5,8 +5,10 @@
 Welkome to Saati main page!   <br/>
 Choose mode:                       <br/>
 
-<a href="/saati/single" accesskey=""> Single </a> <br/>
+<a href="/saati/single" > Single </a> <br/>
+<a href="/saati/multiple" > Saati Multiple </a> <br/>
 <a href="/saati/dynamic" >Dynamic</a>
+<a href="/saati/dynamic/multiple">Multiple Dynamic</a>
 
 
 

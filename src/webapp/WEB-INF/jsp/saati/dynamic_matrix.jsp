@@ -1,6 +1,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@ include file="/WEB-INF/jsp/header.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/style.css" rel="stylesheet">
+    <link href="/resources/css/jquery-ui.custom.min.css" rel="stylesheet">
+    <link href="/resources/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/bootstrap.min.js"></script>
+    <script src="/resources/js/jquery-ui.custom.js"></script>
+    <title>Анализ альтернатив</title>
+</head>
+<body>
+<div class="container">
+    <div class="row header">
+        <button type="button" class="btn btn-primary">Модель ЖЦ</button>
+        <button type="button" class="btn btn-primary">Выбор Альтернатив</button>
+    </div>
 <link href="/resources/css/matrix-style.css" rel="stylesheet"/>
 
 <script type="text/javascript" src="<c:url value="/resources/js/dss.js"/>"> </script>
@@ -16,11 +33,7 @@
 <div id="dop_bg">
     <div class="up_div">
         <h1 style="text-align:center;">Многокритериальный анализ альтернатив по методу Т.Саати</h1>
-        <table width="100%" border="0">
-            <tr>
-                <td width="50%" align="left" valign="bottom"> <h3 style="padding-bottom:0; margin-bottom:0"><a href="/" >Варианты задач</a></h3></td>
-            </tr>
-        </table>
+
         <div class="clearfloat"></div>
     </div>
     <div class="r-border-shape">
@@ -33,7 +46,7 @@
             <script language="JavaScript">
                 var CATEGORY = -2;
             </script>
-            <h2>Простое сравнение альтернатив</h2>
+            <h2>Анализ альтернатив</h2>
 
             <br /><br />
             Для указания уровня приоритета используйте числа от 1/9 до 9.
@@ -82,18 +95,6 @@
                <ol id="dynamic_legend_ol" type="1" >
                </ol>
             </div>
-            <div id="dynamic_control" hidden="true">
-                Настройка динамичекского поля:
-                <select id="cell_dynamic_type">
-                    <option value="linear">a(t)+b</option>
-
-                </select>
-                <input type="text" title="нижний предел" id="low_limit_input"/>
-                <input type="text" title="верхний предел" id="high_limit_input"/>
-                <input type="text" title="шаг" id="step_input"/>
-                <input type="text" title="a" id="a"/>
-                <input type="text" title="b" id="b"/>
-            </div>
             <div id="legend" style="padding-left: 70px;float:left">
                 <b>Легенда:</b>
                 <ol id="legend_ol" type="A">
@@ -122,6 +123,53 @@
                 <br/>
 
             </div>
+            <div id="dynamic_control" style="float:left; padding: 20px;" hidden="true">
+                Настройка динамичекского поля:
+                <select id="cell_dynamic_type">
+                    <option value="linear">a(t)+b</option>
+                    <option value="">a*log(t+1)+b</option>
+                    <option value="">a*exp(b*t)+c</option>
+                    <option value="">a*t&#178 + b*t + c</option>
+
+                </select>
+                <br/>
+                <table>
+                    <tr>
+                        <td>Нижний предел:</td>
+                        <td><input type="text" title="нижний предел" id="low_limit_input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Верхний предел:</td>
+                        <td><input type="text" title="верхний предел" id="high_limit_input"/></td>
+                    </tr>
+                    <tr>
+                        <td>Шаг:</td>
+                        <td><input type="text" title="шаг" id="step_input"/></td>
+                    </tr>
+                    <tr>
+                        <td>Коэф. а :</td>
+                        <td><input type="text" title="a" id="a"/> </td>
+                    </tr>
+                    <tr>
+                        <td>Коэф. b :</td>
+                        <td><input type="text" title="b" id="b"/></td>
+                    </tr>
+
+                </table>
+                <%--Нижний предел:--%>
+                <%--<input type="text" title="нижний предел" id="low_limit_input" />  <br/>--%>
+
+                <%--Верхний предел:--%>
+                <%--<input type="text" title="верхний предел" id="high_limit_input"/> <br/>--%>
+
+                <%--Шаг:--%>
+                <%--<input type="text" title="шаг" id="step_input"/>   <br/>--%>
+                <%--Коэф. а :--%>
+                <%--<input type="text" title="a" id="a"/>      <br/>--%>
+                <%--Коэф. b :--%>
+                <%--<input type="text" title="b" id="b"/>   <br/>--%>
+            </div>
+
             <div style="clear:both"></div>
             <br />
         </div>
@@ -131,7 +179,9 @@
         </div>
     </div>
     <div class="up_div">
-        <div id="placeholder" style="width:600px;height:300px;"></div>
+        <div id="placeholder" style="width:600px;height:300px;">
+            <div class="axisLabel yaxisLabel" style="margin-top: 34.5px;">Response Time (ms)</div>
+        </div>
         <div >
             &copy;&nbsp;&nbsp;МИРЭА
         </div>

@@ -117,7 +117,12 @@ $(document).ready(function(){
 //              console.log(data["vector1"]);
 
 
-                $.plot($("#placeholder"), grafData );
+                $.plot($("#placeholder"), grafData,{
+                    legend:{
+                        position:"sw"
+                    }
+
+                });
                console.log("AFTER GRAF");
 
 
@@ -128,6 +133,7 @@ $(document).ready(function(){
     })
 
     //$.plot($("#placeholder"), [ d1, d2, d3 ]);
+
 
 })
 

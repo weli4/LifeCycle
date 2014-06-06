@@ -3,13 +3,14 @@
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
 <link href="/resources/css/matrix-style.css" rel="stylesheet"/>
 
-<script type="text/javascript" src="<c:url value="/resources/js/dss.js"/>"> </script>
-<script type="text/javascript" src="<c:url value="/resources/js/jquery.keyfilter-1.7.min.js"/>"> </script>
-<script type="text/javascript" src="<c:url value="/resources/js/saati.js"/>"> </script>
-<script type="text/javascript" src="<c:url value="/resources/js/dynamic-saati.js"/>"> </script>
 
-SHOW-RESULT
-
+Результаты вычислений
+<br/>
+<ol id="legend_ol" >
+    <c:forEach var="i" begin="0" end="${alternativesNumber - 1}">
+        <li>Вес ${alternativesArray[i]} : <span> ${resultArray[i]}</span></li>
+    </c:forEach>
+</ol>
 
 
 

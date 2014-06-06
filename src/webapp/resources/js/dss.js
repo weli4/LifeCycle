@@ -1,63 +1,65 @@
 $(document).ready(function() {
+    var STEP = 1;
+    var STEP_COUNT = parseInt($('#step_count').text());
+    var onChange = function(){ //Изменения элемента
+        console.log("in change");
+        var value = $(this).val();
+        var new_value = "";
+
+        //Проверка - имеет ли значение вид: 1 или 1/2 или 1.5
+
+        var pattern = /^[0-9]+(((\/)[1-9][0-9]*)|(\.[0-9]+))?$/;
+        if( !pattern.test( value ) )
+            return false;
+
+        //Определяем ячейку
+        var str = $(this).attr('name');
+        var regexp = /matrix\[([0-9]?)\]\[([0-9]?)\]/gi;
+
+        var x = str.replace(regexp, "$1");
+        var y = str.replace(regexp, "$2");
 
 
+
+        //Задаем значение для зеркальной ячейки
+
+        new_value = getMirrow(value);
+
+
+        if(x == y) new_value = 1;
+
+        $('input[name="matrix['+ y + ']['+ x +']"]').val(new_value);
+
+        //Показываем зависимые элементы
+        showDependentValues(x, y);
+
+        return true;
+
+
+    }
+    var onFocus =  function(){  //При заполнении матрицы - событие по нажатию на форму
+
+
+        var str = $(this).attr('name');
+        var regexp = /matrix\[([0-9]?)\]\[([0-9]?)\]/gi;
+
+        var legend_x = parseInt(str.replace(regexp, "$1"));
+        var legend_y = parseInt(str.replace(regexp, "$2"));
+
+        var legend = $("#legend_ol li");
+
+        var text = 'Уровень приоритета для "' + legend.eq(legend_x).text() + '" относительно "' + legend.eq(legend_y).text() + '"?';
+
+
+        $('#legend_helper').text(text);
+
+    }
     $('input[name^=matrix]')
         .on('keypress',validate)
         //WORKS!
-        .on('change', function(){ //Изменения элемента
-            console.log("in change");
-            var value = $(this).val();
-            var new_value = "";
-
-            //Проверка - имеет ли значение вид: 1 или 1/2 или 1.5
-
-            var pattern = /^[0-9]+(((\/)[1-9][0-9]*)|(\.[0-9]+))?$/;
-            if( !pattern.test( value ) )
-                return false;
-
-            //Определяем ячейку
-            var str = $(this).attr('name');
-            var regexp = /matrix\[([0-9]?)\]\[([0-9]?)\]/gi;
-
-            var x = str.replace(regexp, "$1");
-            var y = str.replace(regexp, "$2");
-
-
-
-            //Задаем значение для зеркальной ячейки
-
-            new_value = getMirrow(value);
-
-
-            if(x == y) new_value = 1;
-
-            $('input[name="matrix['+ y + ']['+ x +']"]').val(new_value);
-
-            //Показываем зависимые элементы
-            showDependentValues(x, y);
-
-            return true;
-
-
-        })
+        .on('change', onChange )
         //WORKS!!!!!!!
-        .on('focus', function(){  //При заполнении матрицы - событие по нажатию на форму
-
-
-            var str = $(this).attr('name');
-            var regexp = /matrix\[([0-9]?)\]\[([0-9]?)\]/gi;
-
-            var legend_x = parseInt(str.replace(regexp, "$1"));
-            var legend_y = parseInt(str.replace(regexp, "$2"));
-
-            var legend = $("#legend_ol li");
-
-            var text = 'Уровень приоритета для "' + legend.eq(legend_x).text() + '" относительно "' + legend.eq(legend_y).text() + '"?';
-
-
-            $('#legend_helper').text(text);
-
-        });
+        .on('focus', onFocus);
     //WORKS!!!!!
     //Убрали фокус с матрицы - скрываем хелпер
     $('input[name^=matrix]').on('focusout', function(){
@@ -74,8 +76,19 @@ $(document).ready(function() {
         $('.matrix_result').hide();
         var matrix="&matrix=1,2&matrix=2,1";
        // matrix.appendText("&matrix=[1,2]&matrix=[2,1]");
+        var url,multi_mode;
+        console.log($('#multi_mode_flag').text());
+        multi_mode =  $('#multi_mode_flag').text() === '1';
+        if(multi_mode)  {
+            url="/saati/multiple/calc";
+        }
+        else{
+            url = '/saati/calc';
+        }
 
-        $.post('/saati/calc',getMatrixForPost(), function(data){
+
+
+        $.post(url,getMatrixForPost(), function(data){
             if(data.error !== undefined) return error(data.error);
 
             //Устаналиваем Вектора
@@ -104,7 +117,14 @@ $(document).ready(function() {
                 $('#attit_cons').css('color','green');
 
             }
-
+            if(multi_mode){
+                console.log("COUNT "+$("#step_count").text());
+                console.log("STEp "+STEP);
+                if(STEP === STEP_COUNT)
+                    $('input[name=end]').show();
+                else
+                    $('input[name=next]').show();
+            }
             $("#result_helper").show();
             //Если шаг - последний, то показываем кнопку "ОП", если нет - кнопку "далее"
 
@@ -147,18 +167,19 @@ $(document).ready(function() {
 
     $('input[name=next]').click(function() {
         _this = this;
-        $.post('/ajax/dss/next/',{catId: CATEGORY}, function(data){
+        $.post('/saati/multiple/next/', function(data){
             if(data.error !== undefined) return error(data.error);
-
-            //Перезаливаем легенду
-            if(STEP == 1 && STEP != data.step ) {
-                $.post('/ajax/dss/get_alternatives', {catId: CATEGORY}, function(data){
-                    if(data.error !== undefined) return error(data.error);
-                    drawLegend(data);
+            console.log("step"+STEP);
+            if(STEP === 1 && STEP !== data.step ) {
+                $.post('/saati/multiple/get_alternatives',  function(alt_data){
+                    if(alt_data.error !== undefined) return error(alt_data.error);
+                    console.log("data recived");
+                    drawLegend(alt_data);
                 },'json');
             }
-
+            //Перезаливаем легенду
             STEP = data.step;
+            console.log("after if")
             //Перерисовываем таблицу с матрицей
             drawMatrixTable(data.matrix_size);
 
@@ -169,7 +190,7 @@ $(document).ready(function() {
             //Скрываем кнопку
             $(_this).hide();
             $('.matrix_result').hide();
-
+            console.log("POST REQUEST /next OK");
         }, 'json');
     });
 
@@ -259,7 +280,7 @@ $(document).ready(function() {
 
 
     function drawMatrixTable(size) {
-
+        console.log("IN DRAW MATRIX! SIZE : "+size);
         chars = ['A','B','C','D','E','F','G','H','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
         str = '<table cellpadding="0" cellspacing="0">';
@@ -282,15 +303,24 @@ $(document).ready(function() {
         str += '</tr></table>';
 
         $('form[name=matrix]').html(str);
+        $('input[name^=matrix]')
+            .on('keypress',validate)
+            //WORKS!
+            .on('change', onChange )
+            //WORKS!!!!!!!
+            .on('focus', onFocus);
+        console.log("DRAW MATRIX OK");
     }
 
     function drawLegend(alternatives) {
         str = '';
+        console.log("in drawLegend")
         for(i=0;i<alternatives.length;i++) {
             str += '<li>'+alternatives[i]+'<span></span></li>';
         }
-
+        console.log("in drawLegend after for")
         $('#legend_ol').html(str);
+        console.log("DRAW LEGEND OK");
     }
 
     //Получаем значение для зеркальной ячейки
