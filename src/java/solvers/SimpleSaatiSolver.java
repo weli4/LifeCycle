@@ -92,19 +92,10 @@ public class SimpleSaatiSolver {
         double sum = r.getL1Norm();
         double[] d = r.toArray();
 
-
-
         for(int i = 0; i < d.length; i++){
             d[i] /= sum;
-
-
-
             d[i]=round(d[i]);
-
-
         }
-
-
 
         return d;
     }
@@ -114,6 +105,8 @@ public class SimpleSaatiSolver {
         result *= 1000;
         result = Math.abs(Math.round(result));
         result /= 1000;
+//        if(val<0)
+//            result*= -1;
         return result;
 
     }

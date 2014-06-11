@@ -7,8 +7,9 @@ Choose mode:                       <br/>
 
 <a href="/saati/single" > Single </a> <br/>
 <a href="/saati/multiple" > Saati Multiple </a> <br/>
-<a href="/saati/dynamic" >Dynamic</a>
-<a href="/saati/dynamic/multiple">Multiple Dynamic</a>
+<a href="/saati/dynamic" >Dynamic</a>     <br/>
+<a href="/saati/dynamic/multiple">Multiple Dynamic</a>   <br/>
+<a href="/saati/test" >JSON TEST</a>
 
 
 

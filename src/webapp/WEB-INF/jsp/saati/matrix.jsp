@@ -31,11 +31,11 @@
             <br/>
             <div id="steps_panel" hidden="${multiModeFlag}">
             Шаг
-            <span id="step_number"></span>
+            <span id="step_number">1</span>
             из
             <span id="step_count">${max_step}</span>
             :
-            <span id="step_name"></span>
+            <span id="step_name">анализ критериев</span>
             </div>
             <br /><br />
             Для указания уровня приоритета используйте числа от 1/9 до 9.

@@ -90,7 +90,7 @@ public class MultipleSaatiController {
         modelAndView.addObject("multiModeFlag",1);
 
         httpSession.setAttribute(STEP_ATTRIBUTE_NAME, 1);
-        httpSession.setAttribute(MAX_STEP_ATTRIBUTE_NAME, saatiSessionModel.getAlternativesArray().length+1);
+        httpSession.setAttribute(MAX_STEP_ATTRIBUTE_NAME, saatiSessionModel.getCriteriesArray().length+1);
         modelAndView.setViewName("/saati/matrix");
         return modelAndView;
     }
@@ -190,6 +190,11 @@ public class MultipleSaatiController {
             stepComment = "Оценка критериев";
         else
             stepComment = "Оценка альтернатив относительно критерия "+saatiSessionModel.getCriteriesArray()[step-2]+"";
+        try {
+            stepComment =  new String(stepComment.getBytes("UTF-8"), "ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+
+        }
 
         //{"step":3,"step_name":"\u043a2","matrix_size":2}
         StringBuffer response = new StringBuffer();

@@ -43,11 +43,16 @@
         </div>
         <div class="content_box" style="padding-left: 30px;">
 
-            <script language="JavaScript">
-                var CATEGORY = -2;
-            </script>
-            <h2>Анализ альтернатив</h2>
 
+            <h2>Анализ альтернатив</h2>
+            <div id="steps_panel" hidden="true">
+                Шаг
+                <span id="step_number">1</span>
+                из
+                <span id="step_count">${max_step}</span>
+                :
+                <span id="step_name">анализ критериев</span>
+            </div>
             <br /><br />
             Для указания уровня приоритета используйте числа от 1/9 до 9.
             <br /><br />
@@ -89,6 +94,8 @@
                 <br />
                 <input type="button" name="calc_dynamic_matrix" value="Рассчитать"/>
                 <input type="button" name="toggle_dynamic" value="Сделать коэф. диманичным"  >
+                <input type="button" id="next" value="Далее" hidden="true"   />
+                <a href="/saati/dynamic/multiple/result"><input type="button" id="end" value="Завершить" hidden="true"   /></a>
             </div>
             <div id="dynamic_legend" hidden="true" >
                 Описание динамических полей:
@@ -124,35 +131,27 @@
 
             </div>
             <div id="dynamic_control" style="float:left; padding: 20px;" hidden="true">
-                Настройка динамичекского поля:
+                Настройка динамичекского поля (<span id="dyn_coord_x"></span>,<span id="dyn_coord_y"></span>):
                 <select id="cell_dynamic_type">
-                    <option value="linear">a(t)+b</option>
-                    <option value="">a*log(t+1)+b</option>
-                    <option value="">a*exp(b*t)+c</option>
-                    <option value="">a*t&#178 + b*t + c</option>
-
+                    <option value="1">a(t)+b</option>
+                    <option value="2">a*log(t+1)+b</option>
+                    <option value="3">a*exp(b*t)+c</option>
+                    <option value="4">a*t&#178 + b*t + c</option>
                 </select>
                 <br/>
                 <table>
-                    <tr>
-                        <td>Нижний предел:</td>
-                        <td><input type="text" title="нижний предел" id="low_limit_input" /></td>
-                    </tr>
-                    <tr>
-                        <td>Верхний предел:</td>
-                        <td><input type="text" title="верхний предел" id="high_limit_input"/></td>
-                    </tr>
-                    <tr>
-                        <td>Шаг:</td>
-                        <td><input type="text" title="шаг" id="step_input"/></td>
-                    </tr>
+
                     <tr>
                         <td>Коэф. а :</td>
-                        <td><input type="text" title="a" id="a"/> </td>
+                        <td><input type="text" title="a" id="rate_a"/> </td>
                     </tr>
                     <tr>
                         <td>Коэф. b :</td>
-                        <td><input type="text" title="b" id="b"/></td>
+                        <td><input type="text" title="b" id="rate_b"/></td>
+                    </tr>
+                    <tr id="rate_c_container">
+                        <td>Коэф. c :</td>
+                        <td><input type="text" title="b" id="rate_c"/></td>
                     </tr>
 
                 </table>
@@ -185,6 +184,7 @@
         <div >
             &copy;&nbsp;&nbsp;МИРЭА
         </div>
+        <div hidden="true" id="multi_mode_flag">${multiModeFlag}</div>
     </div>
 </div>
 
