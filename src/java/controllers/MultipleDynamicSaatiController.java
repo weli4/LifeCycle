@@ -1,10 +1,13 @@
 package controllers;
 
 
+import model.DynamicCell;
 import model.DynamicMatrixData;
+import model.GrafModel;
 import model.SessionDynamicSaatiModel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.codehaus.jackson.io.JsonStringEncoder;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +21,10 @@ import solvers.SimpleSaatiSolver;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 @Controller
 @RequestMapping("/saati/dynamic/multiple")
@@ -26,6 +32,7 @@ public class MultipleDynamicSaatiController {
 
     private static final String STEP_ATTRIBUTE_NAME = "step" ;
     private static final String MAX_STEP_ATTRIBUTE_NAME = "step_count";
+    private static final double MAX_ATTITUDE_INDEX = 0.1;
     private SessionDynamicSaatiModel sessionDynamicModel = new SessionDynamicSaatiModel();
     private Log log = LogFactory.getLog(MultipleDynamicSaatiController.class);
 
@@ -123,7 +130,8 @@ public class MultipleDynamicSaatiController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/next", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/next", method = RequestMethod.POST,produces="application/json;charset=UTF-8")
     public @ResponseBody String next(HttpSession httpSession,Model model){
         int step,maxStep;
         step =(int) httpSession.getAttribute(STEP_ATTRIBUTE_NAME);
@@ -157,10 +165,10 @@ public class MultipleDynamicSaatiController {
         response.append("\"matrix_size\":");
         response.append(sessionDynamicModel.getAlternativesArray().length);
 
-
         response.append("}");
         try {
-            return  new String(response.toString().getBytes("UTF-8"), "ISO-8859-1");
+
+            return  new String(JsonStringEncoder.getInstance().encodeAsUTF8(response.toString()), "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             return  response.toString();
@@ -173,8 +181,9 @@ public class MultipleDynamicSaatiController {
     public @ResponseBody
     String calc(HttpServletRequest request, HttpSession httpSession){
         ObjectMapper om = new ObjectMapper();
+        String message = "";
 
-        DynamicMatrixData data;
+        DynamicMatrixData data ;
         int step = (int)httpSession.getAttribute(STEP_ATTRIBUTE_NAME);
         try{
 
@@ -186,15 +195,30 @@ public class MultipleDynamicSaatiController {
             else{
                 sessionDynamicModel.getAlternativesDataList().add(data);
             }
+            double lowLimit = sessionDynamicModel.getLowLimit();
+            double topLimit = sessionDynamicModel.getTopLimit();
+
+            calculateStaticMatrixByParameter(data,lowLimit);
+            double lowAttitudeIndex = new SimpleSaatiSolver(data.getMatrix()).getAttitudeIndex();
 
 
+            calculateStaticMatrixByParameter(data,topLimit);
+            double topAttitudeIndex = new SimpleSaatiSolver(data.getMatrix()).getAttitudeIndex();
+
+            if(topAttitudeIndex > MAX_ATTITUDE_INDEX || lowAttitudeIndex > MAX_ATTITUDE_INDEX ){
+                message = "ОС при t = " + lowLimit +" : " +lowAttitudeIndex +"; ОС при t = "+topLimit +" : "+ topAttitudeIndex;
+
+            }
         }
         catch(Exception e){
             e.printStackTrace();
 
 
         }
-        return "{\"message\":\" OK\"}";
+
+
+
+        return "{\"message\":\""+message+"\"}";
     }
 
 
@@ -217,7 +241,7 @@ public class MultipleDynamicSaatiController {
 
 
         try {
-            return  new String(response.toString().getBytes("UTF-8"), "ISO-8859-1");
+            return  new String(JsonStringEncoder.getInstance().encodeAsUTF8(response.toString()), "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             return  response.toString();
@@ -225,30 +249,146 @@ public class MultipleDynamicSaatiController {
     }
 
     @RequestMapping(value = "/result")
-    public ModelAndView result(){
-        ModelAndView modelAndView = new ModelAndView("/saati/show-result");
+    public @ResponseBody GrafModel[] result(){
+        double lowLimit = sessionDynamicModel.getLowLimit();
+        double highLimit = sessionDynamicModel.getTopLimit();
+        double step = sessionDynamicModel.getStep();
+        double [][] criteriasMatrix = sessionDynamicModel.getCriteriasData().getMatrix();
+        DynamicCell[] criteriasDynamicCellArray = sessionDynamicModel.getCriteriasData().getCellsArray();
 
-        int altCount = sessionDynamicModel.getAlternativesArray().length;
-        double[] resultArray = new double[altCount];
-        //double[] rate =  new SimpleSaatiSolver(sessionDynamicModel.getCriteriasMatrix()).getDoubleVector();
+        String[] alternatives = sessionDynamicModel.getAlternativesArray();
+        String[] criterias = sessionDynamicModel.getCriteriesArray();
 
-        for(int i = 0; i < sessionDynamicModel.getCriteriesArray().length; i++){
-        //    double[] localWeights = new SimpleSaatiSolver(sessionDynamicModel.getAlternativesMatrixList().get(i)).getDoubleVector();
+        int alternativesLength = alternatives.length;
+        int criteriasLength = criterias.length;
+
+        DynamicMatrixData[] alternativesDataArrray = sessionDynamicModel.getAlternativesDataList().toArray( new DynamicMatrixData[alternatives.length]);
+
+        LinkedHashMap<Double, double[]> resultMap = new LinkedHashMap<Double, double[]>();
+
+        for(Double t = lowLimit; t<=highLimit; t+=step){
+
+            //Вычисляем статическую матрицу критериев от t
+            calculateStaticMatrixByParameter(sessionDynamicModel.getCriteriasData(),t);
 
 
-            for(int j = 0; j< altCount; j++){
-          //      resultArray[j]=resultArray[j] + localWeights[j]* rate[i];
+            // Вычисляем вектор критериев преобразованной выше матрице
+            double[] criteriesWeightArray = new SimpleSaatiSolver(criteriasMatrix).getDoubleVector();
+
+            // вычисляем вектора весов альтернатив
+            //заведем массив для хранения локальных весов
+            double[][] alternativesLocalWeights = new double[criteriasLength][];
+            double[] currentAltWeights = new double[alternativesLength];
+
+
+
+
+            //Вычисляем статическое состояние матриц альтернатив для каждого критерия и вычисляем веса
+            for(int i = 0; i < criteriasLength; i++){
+                calculateStaticMatrixByParameter(alternativesDataArrray[i],t);
+                alternativesLocalWeights[i] = new SimpleSaatiSolver(alternativesDataArrray[i].getMatrix()).getDoubleVector();
+
+                //умножаем полученные веса на коэффициент критерия
+                for(int j=0; j< alternativesLocalWeights[i].length; j++){
+                    alternativesLocalWeights[i][j] *= criteriesWeightArray[i];
+                    currentAltWeights[j] += alternativesLocalWeights[i][j];
+                }
+
             }
+
+            //Запоминаем значения для конкретного t
+            resultMap.put(t,currentAltWeights);
+
         }
 
+        ArrayList<GrafModel> list = new ArrayList<GrafModel>();
+//
+//        double[][] array = {{1,2},{5,7}};
+//        double[][] array2 = {{2,4},{6,8}};
+        for(int i=0; i<alternativesLength; i++){
+            ArrayList<double[]> tempGrafData = new ArrayList<double[]>();
+            for(Double key : resultMap.keySet()){
+                double[] tempPoint = new double[2];
+                tempPoint[0] = key;
+                tempPoint[1] = resultMap.get(key)[i];
+                tempGrafData.add(tempPoint);
+            }
+            list.add(new GrafModel(alternatives[i],tempGrafData.toArray(new double[tempGrafData.size()][])));
+        }
+
+//        list.add(new GrafModel("Первый лабле",array));
+//        list.add(new GrafModel("Второй лабле",array2));
 
 
 
-        modelAndView.addObject("criteriesArray",sessionDynamicModel.getCriteriesArray());
-        modelAndView.addObject("alternativesArray",sessionDynamicModel.getAlternativesArray());
-        modelAndView.addObject("alternativesNumber",sessionDynamicModel.getAlternativesArray().length);
-        modelAndView.addObject("resultArray",resultArray);
-        return modelAndView;
+        return list.toArray(new GrafModel[list.size()]);
+
+    }
+
+    @RequestMapping("/reset")
+    public String resetAll(HttpSession session){
+        session.setAttribute(STEP_ATTRIBUTE_NAME,1);
+        sessionDynamicModel = new SessionDynamicSaatiModel();
+        return "redirect:/saati/";
+    }
+
+    private double getDynamicCellValue(DynamicCell cell, double t){
+
+        double a = cell.getA();
+        double b = cell.getB();
+        int x =  cell.getX();
+        int y = cell.getY();
+
+        double result;
+        switch(cell.getCellType()){
+            case 1:  result = a*t+b;
+                break;
+            case 2:  result = a*Math.log10(t+1)+b;
+                break;
+            case 3:
+                double c = cell.getC();
+                result = a*Math.exp(t*b)+c;
+                break;
+            case 4:
+                double c2 = cell.getC();
+                result = a*Math.pow(t,2)+b*t+c2;
+                break;
+
+            default: result=0;
+                break;
+        }
+        return result;
+    }
+
+    private void calculateStaticMatrixByParameter(DynamicMatrixData data, double t){
+
+
+            DynamicCell[] currentCellsArray = data.getCellsArray();
+            double[][] currentMatrix = data.getMatrix();
+
+        // цикл для заполнения матрицы статическими значениями динамических ячеек
+            for(int k=0; k< currentCellsArray.length; k++){
+                //вычисляем значение конкретной ячейки
+                DynamicCell currentCell = currentCellsArray[k];
+                double tempCellValue = getDynamicCellValue(currentCell,t);
+                int x = currentCell.getX();
+                int y = currentCell.getY();
+
+
+                if(tempCellValue != 0){
+                    if(y>x)  {
+                        currentMatrix[x][y]=tempCellValue;
+                        currentMatrix[y][x]=1/tempCellValue;
+                    }
+                    else  {
+                        currentMatrix[y][x]=tempCellValue;
+                        currentMatrix[x][y]=1/tempCellValue;
+                    }
+                }
+            }
+
+
+
 
     }
 }

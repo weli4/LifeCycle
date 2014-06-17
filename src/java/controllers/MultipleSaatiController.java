@@ -4,6 +4,7 @@ package controllers;
 import model.MultipleSaatiiSessionModel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.codehaus.jackson.io.JsonStringEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +43,7 @@ public class MultipleSaatiController {
     public ModelAndView setAlternatives(@RequestParam(value = "input_alt") String[] alternativesArray, HttpSession httpSession){
         ModelAndView modelAndView = new ModelAndView();
         saatiSessionModel = new MultipleSaatiiSessionModel();
-        saatiSessionModel.setText("SESSION MODEL TEXT");
+
 
         httpSession.setAttribute("sessionObject", saatiSessionModel);
 
@@ -103,7 +104,7 @@ public class MultipleSaatiController {
     }
 
     @RequestMapping("/multiple/calc")
-    public @ResponseBody String calc(@RequestParam(value = "matrix") String[][] input , Model model, HttpSession httpSession){
+    public @ResponseBody String calc(@RequestParam(value = "matrix") String[][] input ,  HttpSession httpSession){
 
 
         int matrixSize = input[0].length;
@@ -163,7 +164,7 @@ public class MultipleSaatiController {
 
 
     @RequestMapping(value = "/multiple/next", method = RequestMethod.POST)
-    public @ResponseBody String next(HttpSession httpSession,Model model){
+    public @ResponseBody String next(HttpSession httpSession){
         int step,maxStep;
         step =(int) httpSession.getAttribute(STEP_ATTRIBUTE_NAME);
         maxStep =(int) httpSession.getAttribute(MAX_STEP_ATTRIBUTE_NAME);
@@ -190,11 +191,6 @@ public class MultipleSaatiController {
             stepComment = "Оценка критериев";
         else
             stepComment = "Оценка альтернатив относительно критерия "+saatiSessionModel.getCriteriesArray()[step-2]+"";
-        try {
-            stepComment =  new String(stepComment.getBytes("UTF-8"), "ISO-8859-1");
-        } catch (UnsupportedEncodingException e) {
-
-        }
 
         //{"step":3,"step_name":"\u043a2","matrix_size":2}
         StringBuffer response = new StringBuffer();
@@ -211,7 +207,7 @@ public class MultipleSaatiController {
 
         response.append("}");
         try {
-            return  new String(response.toString().getBytes("UTF-8"), "ISO-8859-1");
+            return  new String(JsonStringEncoder.getInstance().encodeAsUTF8(response.toString()), "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             return  response.toString();
@@ -237,7 +233,7 @@ public class MultipleSaatiController {
 
 
         try {
-            return  new String(response.toString().getBytes("UTF-8"), "ISO-8859-1");
+            return  new String(JsonStringEncoder.getInstance().encodeAsUTF8(response.toString()), "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             return  response.toString();

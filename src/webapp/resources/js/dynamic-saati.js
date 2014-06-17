@@ -15,37 +15,9 @@ $(document).ready(function(){
     if(multi_mode)
         $('#steps_panel').show();
 
-    $('input[name^=matrix]').on('focus',function(){
-        var str = $(this).attr('name');
-        var regexp = /matrix\[([0-9]?)\]\[([0-9]?)\]/gi;
 
-        var x = str.replace(regexp, "$1");
-        var y = str.replace(regexp, "$2");
 
-        last_focused_field_name=$(this).attr('name');;
-
-        var cellIndex = getCellIndex(x,y);
-        if(cellIndex === -1)
-            cellIndex = getCellIndex(y,x);
-        //Покащываем настройки динамического поля,если поле динамическое и наоборот
-        if(cellIndex !== -1){
-            console.log("ЯЧЕЙКА ДИНАМИЧЕСКАЯ");
-
-            reFillDynamicLegend(cellIndex);
-            $('#dynamic_legend').show();
-
-            $('#dynamic_control').show();
-
-        }
-        else{
-            $('#dynamic_legend').hide();
-            $('#dynamic_control').hide();
-
-        }
-
-        console.log(last_focused_field_name);
-
-    });
+    $('input[name^=matrix]').on('focus',onFocusChanges);
 
 
 
@@ -110,20 +82,11 @@ $(document).ready(function(){
 
 
     $('input[name=calc_dynamic_matrix]').on('click',function(){
-        console.log('click');
 
         var matrix = getDoubleMatrix();
 
-//            var cellArray = new Array();
-//            cellArray.push({x:0, y:1, a:1, b:0, c:3, type:1});
-//            cellArray.push({x:2, y:2, a:2, b:2, c:2, type:2});
         var postData = new PostData(matrix, dynamicCellsArray);
         if(multi_mode){
-
-
-
-
-
             $.ajax({
                 headers: {
                     "Accept": "application/json",
@@ -136,8 +99,19 @@ $(document).ready(function(){
                 contentType: 'application/json; charset=UTF-8',
                 success: function(data) {
                     dynamicCellsArray = new Array();
-                    console.log("COUNT "+$("#step_count").text());
-                    console.log("STEp "+STEP);
+                    if(data.message) {
+                        console.log("message: "+data.message);
+                        $('#matrix_helper_no').show();
+                        $('#error_comment').text(data.message);
+                        $('#error_comment').show();
+                    }
+                    else{
+                        $('#matrix_helper_no').hide();
+                        $('#error_comment').text(data.message);
+                        $('#error_comment').hide();
+
+                    }
+                    $('#dynamic_control').hide();
                     if(STEP === STEP_COUNT)
                         $('#end').show();
                     else
@@ -151,11 +125,8 @@ $(document).ready(function(){
         else{
             var matrix = getDoubleMatrix();
 
-//            var cellArray = new Array();
-//            cellArray.push({x:0, y:1, a:1, b:0, c:3, type:1});
-//            cellArray.push({x:2, y:2, a:2, b:2, c:2, type:2});
             postData = new PostData(matrix, dynamicCellsArray);
-
+            $('#result_field').show();
             $.ajax({
                 headers: {
                     "Accept": "application/json",
@@ -168,16 +139,6 @@ $(document).ready(function(){
                 contentType: 'application/json; charset=UTF-8',
                 success: function(data){
                     if(data.error !== undefined) return error(data.error);
-
-
-                    //var d1 = $(data).find("vector0");
-
-                    //console.log(d1);
-//              var grafData = [];
-//                grafData.push(grafData.datasets.vector0);
-//                grafData.push(grafData.datasets.vector1);
-
-
                     var grafData=[];
                     var i =0;
 
@@ -185,22 +146,26 @@ $(document).ready(function(){
                         grafData.push(data[key]);
 
                     })
-//           for(var i=0; i<3; i++){
-//               grafData.push(data["vector"+i]);
-//
-//           }
-//            console.log(data["vector"+i]);
-//              console.log(data["vector1"]);
-
 
                     $.plot($("#placeholder"), grafData,{
                         legend:{
                             position:"sw"
+                        },
+                        series: {
+                            lines: {
+                                show: true
+                            },
+                            points: {
+                                show: true
+                            }
+                        },
+                        grid: {
+                            hoverable: true,
+                            clickable: true
                         }
 
                     });
                     console.log("AFTER GRAF");
-
 
 
                 },
@@ -209,17 +174,37 @@ $(document).ready(function(){
                 }
             });
 
+            // добавляем подписку к графику
+            $("<div id='tooltip'></div>").css({
+                position: "absolute",
+                display: "none",
+                border: "1px solid #fdd",
+                padding: "2px",
+                "background-color": "#fee",
+                opacity: 0.80
+            }).appendTo("body");
 
 
+            // брабатываем события графика
+            $("#placeholder").bind("plothover", function (event, pos, item) {
+                if (item) {
+                    var x = item.datapoint[0].toFixed(2),
+                        y = item.datapoint[1].toFixed(2);
 
-            //$.post('/saati/dynamic/show-result',postData, ,'json');
+                    $("#tooltip").html(item.series.label + " при t - " + x + " = " + y)
+                        .css({top: item.pageY+5, left: item.pageX+5})
+                        .fadeIn(200);
+                } else {
+                    $("#tooltip").hide();
+                }
+            });
 
         }
 
 
     })
 
-    //$.plot($("#placeholder"), [ d1, d2, d3 ]);
+
 
 
     $('#next').click(function() {
@@ -238,7 +223,7 @@ $(document).ready(function(){
             console.log("after if")
             //Перерисовываем таблицу с матрицей
             drawMatrixTable(data.matrix_size);
-
+            $('input[name^=matrix]').on('focus',onFocusChanges);
             //Устанавливаем шаг
             $('#step_number').text(data.step);
             $('#step_name').text(data.step_name);
@@ -262,7 +247,8 @@ $(document).ready(function(){
         dynamicCellsArray[getCellIndex(y,x)].a = $(this).val();
         console.log("NEW a :"+ dynamicCellsArray[getCellIndex(x,y)].a );
 
-    });
+    })
+        .keyfilter(/[0-9\.\-]/);
     $('#rate_b').on('change',function(){
         var regexp = /matrix\[([0-9]?)\]\[([0-9]?)\]/gi;
 
@@ -273,7 +259,8 @@ $(document).ready(function(){
         dynamicCellsArray[getCellIndex(y,x)].b = $(this).val();
 
 
-    });
+    })
+        .keyfilter(/[0-9\.\-]/);
     $('#rate_c').on('change',function(){
         var regexp = /matrix\[([0-9]?)\]\[([0-9]?)\]/gi;
 
@@ -284,7 +271,8 @@ $(document).ready(function(){
         dynamicCellsArray[getCellIndex(y,x)].c = $(this).val();
 
 
-    });
+    })
+        .keyfilter(/[0-9\.\-]/);
 
     $('#cell_dynamic_type').on('change',function(){
         var regexp = /matrix\[([0-9]?)\]\[([0-9]?)\]/gi;
@@ -299,6 +287,85 @@ $(document).ready(function(){
 
     });
 
+    $('#end').on('click',function(){
+        $.ajax({
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            type: "POST",
+            url: "/saati/dynamic/multiple/result",
+            dataType: "json",
+            contentType: 'application/json; charset=UTF-8',
+            success: function(data){
+                if(data.error !== undefined) return error(data.error);
+
+                $('#main_div').hide();
+                $('#result_field').show();
+                var grafData=[];
+                var i =0;
+
+                $.each(data,function(key){
+                    grafData.push(data[key]);
+
+                })
+
+
+                // рисуем график
+                $.plot($("#placeholder"), grafData,{
+                    legend:{
+                        position:"sw"
+                    },
+                    series: {
+                        lines: {
+                            show: true
+                        },
+                        points: {
+                            show: true
+                        }
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true
+                    }
+
+                });
+                console.log("AFTER GRAF");
+
+               // добавляем подписку к графику
+                $("<div id='tooltip'></div>").css({
+                    position: "absolute",
+                    display: "none",
+                    border: "1px solid #fdd",
+                    padding: "2px",
+                    "background-color": "#fee",
+                    opacity: 0.80
+                }).appendTo("body");
+
+
+                // брабатываем события графика
+                $("#placeholder").bind("plothover", function (event, pos, item) {
+                    if (item) {
+                        var x = item.datapoint[0].toFixed(2),
+                            y = item.datapoint[1].toFixed(2);
+
+                        $("#tooltip").html(item.series.label + " of " + x + " = " + y)
+                            .css({top: item.pageY+5, left: item.pageX+5})
+                            .fadeIn(200);
+                    } else {
+                        $("#tooltip").hide();
+                    }
+                });
+
+
+
+
+            },
+            error: function(data) {
+                alert("ERROR");
+            }
+        });
+    });
 })
 
 function reFillDynamicLegend(cellIndex){
@@ -379,3 +446,35 @@ function DynamicCell(x,y,type,a,b,c) {
     this.b = b;
     this.c = c;
 }
+
+var onFocusChanges = function(){
+    var str = $(this).attr('name');
+    var regexp = /matrix\[([0-9]?)\]\[([0-9]?)\]/gi;
+
+    var x = str.replace(regexp, "$1");
+    var y = str.replace(regexp, "$2");
+
+    last_focused_field_name=$(this).attr('name');;
+
+    var cellIndex = getCellIndex(x,y);
+    if(cellIndex === -1)
+        cellIndex = getCellIndex(y,x);
+    //Покащываем настройки динамического поля,если поле динамическое и наоборот
+    if(cellIndex !== -1){
+        console.log("ЯЧЕЙКА ДИНАМИЧЕСКАЯ");
+
+        reFillDynamicLegend(cellIndex);
+        $('#dynamic_legend').show();
+
+        $('#dynamic_control').show();
+
+    }
+    else{
+        $('#dynamic_legend').hide();
+        $('#dynamic_control').hide();
+
+    }
+
+    console.log(last_focused_field_name);
+
+};

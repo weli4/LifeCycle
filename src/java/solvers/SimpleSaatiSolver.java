@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class SimpleSaatiSolver {
 
-    private static final double[] RANDOM_INDEXES_TABLE = {0,0,0.58,0.9,1.12,1.24,1.32,1.14,1.45};
+    private static final double[] RANDOM_INDEXES_TABLE = {0,0,0.58,0.9,1.12,1.24,1.32,1.41,1.45};
     private Log log = LogFactory.getLog(SimpleSaatiSolver.class);
     private RealMatrix matrix;
     private double lambda,consIndex,attitCons ;
@@ -25,9 +25,6 @@ public class SimpleSaatiSolver {
         int matrixSize = matrix.getRowDimension();
         consIndex = round((lambda - matrixSize ) /(matrixSize - 1));
         attitCons = round(consIndex/RANDOM_INDEXES_TABLE[matrixSize-1]);
-
-        log.info("SimpleSaatiSolvr init done");
-
 
     }
 
@@ -47,6 +44,10 @@ public class SimpleSaatiSolver {
 
 
         return resultStr.toString();
+    }
+    public double getAttitudeIndex(){
+
+        return  attitCons;
     }
 
     private String getJSONAttribute(String name, String value){
@@ -68,8 +69,6 @@ public class SimpleSaatiSolver {
 
         for(int i = 0; i < d.length; i++){
             d[i] /= sum;
-
-
 
             resultStr.append(round(d[i]));
             if(i != d.length-1){

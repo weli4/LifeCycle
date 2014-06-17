@@ -6,7 +6,7 @@ $(document).ready(function() {
     var STEP_COUNT = parseInt($('#step_count').text());
 
     $('input[name^=matrix]')
-        .on('keypress',validate)
+        .keyfilter(/[0-9\/\.]/)
         //WORKS!
         .on('change', onChange )
         //WORKS!!!!!!!
@@ -14,7 +14,7 @@ $(document).ready(function() {
     //WORKS!!!!!
     //Убрали фокус с матрицы - скрываем хелпер
     $('input[name^=matrix]').on('focusout', function(){
-        $('#legend_helper').text("");
+        $('#legend_helper').text("Выберите ячейку");
     });
 
 
@@ -255,7 +255,7 @@ function drawMatrixTable(size) {
 
     $('form[name=matrix]').html(str);
     $('input[name^=matrix]')
-        .on('keypress',validate)
+        .keyfilter(/[0-9\/\.]/)
         //WORKS!
         .on('change', onChange )
         //WORKS!!!!!!!
@@ -317,24 +317,6 @@ var onFocus =  function(){  //При заполнении матрицы - со�
 
 }
 
-function validate(e)  {
-
-    e = e || event;
-
-    if (e.ctrlKey || e.altKey || e.metaKey) return;
-
-    var chr = getChar(e);
-
-    // с null надо осторожно в неравенствах, т.к. например null >= '0' => true!
-    // на всякий случай лучше вынести проверку chr == null отдельно
-    if (chr === null) return;
-
-    if (chr < '.' || chr > '9'  ) {
-        return false;
-    }
-
-
-};
 
 /*
  * Заполняем обобщенные приоритеты

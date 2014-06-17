@@ -7,16 +7,21 @@ $(document).ready( function(){
     //Функция для добавления новых элементов ввода
     document.getElementById("add_button").onclick = function(){
         if(altNumber < MAX_ALT_NUMBER){
-          altNumber++;
+            altNumber++;
             var li = document.createElement('li');
-            li.innerHTML = '<input type="text" name="input_alt'+'" /> ';
-            document.getElementById("alt_ordered_list").appendChild(li);
+            var div = document.createElement('div');
+            $(div).addClass("form-group");
+
+            div.innerHTML = '<label class="col-sm-1 text-right" for="alt'+altNumber+'">'+altNumber+'</label><div class="col-sm-6"><input id="alt'+altNumber+'" type="text" name="input_alt" class="form-control"/></div>';
+
+            //li.innerHTML = '<div class="com-sl-2">'+altNumber+'</div><div class="com-sl-8"><input type="text" name="input_alt" class="form-control"/></div>';
+            $("#form").append(div);
         }
     };
     //Удаление элементов ввода
     document.getElementById("sub_button").onclick = function(){
         if(altNumber > MIN_ALT_NUMBER){
-            document.getElementById("alt_ordered_list").getElementsByTagName("li")[altNumber-1].remove();
+            $('#form div.form-group:last-child').remove();
             altNumber--;
         }
     };
@@ -34,13 +39,3 @@ $(document).ready( function(){
 
 });
 
-Element.prototype.remove = function() {
-    this.parentElement.removeChild(this);
-}
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-    for(var i = 0, len = this.length; i < len; i++) {
-        if(this[i] && this[i].parentElement) {
-            this[i].parentElement.removeChild(this[i]);
-        }
-    }
-}

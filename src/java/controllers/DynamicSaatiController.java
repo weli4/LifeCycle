@@ -34,12 +34,10 @@ public class DynamicSaatiController {
 
     @RequestMapping(value = "/dynamic",method = RequestMethod.POST)
     public ModelAndView setAlt(@RequestParam(value = "input_alt") String[] alternativesArray){
-        ModelAndView m = new ModelAndView("redirect:/saati/dynamic/set_limits");
+        ModelAndView modelAndView = new ModelAndView("redirect:/saati/dynamic/set_limits");
         sessionModel.setAlternativesArray(alternativesArray);
-        System.out.println(Arrays.toString(alternativesArray));
 
-
-        return m;
+        return modelAndView;
     }
 
     @RequestMapping("/dynamic/set_limits")
@@ -56,9 +54,6 @@ public class DynamicSaatiController {
         sessionModel.setLowLimit(lowLimit);
         sessionModel.setTopLimit(topLimit);
         sessionModel.setStep(step);
-        log.info("Нижний "+ lowLimit);
-        log.info("Верхний "+ topLimit);
-        log.info("Шаг " + step);
         return modelAndView;
     }
 
@@ -73,7 +68,7 @@ public class DynamicSaatiController {
 
         return m;
     }
-    //TODO Реализовать работу с множеством ячеек разных типов. Сейчас работает только с одной линейной ячейкой
+
     @RequestMapping(value ="/dynamic/show-result",method = RequestMethod.POST)
     public @ResponseBody
     GrafModel[] showGraf(HttpServletRequest request){
@@ -105,15 +100,16 @@ public class DynamicSaatiController {
 
 
             int counter = 0;
-            double value=lowLimit;
+
             double tempTargetValue;
             DynamicCell[] cells = data.getCellsArray();
-            for(; value<=highLimit; value+=step){
+            for(double value=lowLimit; value<=highLimit; value+=step){
                 for(int k=0; k< cells.length; k++){
                     double a = cells[k].getA();
                     double b = cells[k].getB();
                     int x =  cells[k].getX();
                     int y = cells[k].getY();
+                   // log.info("Cell x: "+x +" y: " +y+" a: "+a +" b: "+b+" type: "+cells[k].getCellType() );
                     //1 - linear; 2-log; 3 -exp ; 4 - quadratic
                     switch(cells[k].getCellType()){
                         case 1:  tempTargetValue = a*value+b;
@@ -133,17 +129,24 @@ public class DynamicSaatiController {
                             break;
                     }
 
-
                     if(tempTargetValue != 0){
-                        if(x>y)
+                        if(y>x)  {
                             input[x][y]=tempTargetValue;
-                        else
+                            input[y][x]=1/tempTargetValue;
+                        }
+                        else  {
+                            input[y][x]=tempTargetValue;
                             input[x][y]=1/tempTargetValue;
+                        }
                     }
                 }
 
-                log.info(Arrays.toString(input[0]));
-                log.info(Arrays.toString(input[1]));
+
+//                for(int i= 0; i<input.length; i++){
+//                    System.out.println(Arrays.toString(input[i]));
+//
+//                }
+
 
                 SimpleSaatiSolver saatiSolver = new SimpleSaatiSolver(input);
                 double[] tempKoef = saatiSolver.getDoubleVector();
