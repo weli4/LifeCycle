@@ -93,7 +93,7 @@ $(document).ready(function(){
                     "Content-Type": "application/json"
                 },
                 type: "POST",
-                url: "/saati/dynamic/multiple/calc",
+                url: _contextPath+"/saati/dynamic/multiple/calc",
                 dataType: "json",
                 data: JSON.stringify(postData),
                 contentType: 'application/json; charset=UTF-8',
@@ -133,7 +133,7 @@ $(document).ready(function(){
                     "Content-Type": "application/json"
                 },
                 type: "POST",
-                url: "/saati/dynamic/show-result",
+                url: _contextPath+"/saati/dynamic/show-result",
                 dataType: "json",
                 data: JSON.stringify(postData),
                 contentType: 'application/json; charset=UTF-8',
@@ -208,11 +208,11 @@ $(document).ready(function(){
 
 
     $('#next').click(function() {
-        $.post('/saati/dynamic/multiple/next', function(data){
+        $.post(_contextPath+'/saati/dynamic/multiple/next', function(data){
             if(data.error !== undefined) return error(data.error);
             console.log("step"+STEP);
             if(STEP === 1 && STEP !== data.step ) {
-                $.post('/saati/dynamic/multiple/get_alternatives',  function(alt_data){
+                $.post(_contextPath+'/saati/dynamic/multiple/get_alternatives',  function(alt_data){
                     if(alt_data.error !== undefined) return error(alt_data.error);
                     console.log("data recived");
                     drawLegend(alt_data);
@@ -294,7 +294,7 @@ $(document).ready(function(){
                 "Content-Type": "application/json"
             },
             type: "POST",
-            url: "/saati/dynamic/multiple/result",
+            url: _contextPath+"/saati/dynamic/multiple/result",
             dataType: "json",
             contentType: 'application/json; charset=UTF-8',
             success: function(data){

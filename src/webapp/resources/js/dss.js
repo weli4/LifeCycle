@@ -31,10 +31,10 @@ $(document).ready(function() {
         console.log($('#multi_mode_flag').text());
         multi_mode =  $('#multi_mode_flag').text() === '1';
         if(multi_mode)  {
-            url="/saati/multiple/calc";
+            url=_contextPath+'/saati/multiple/calc';
         }
         else{
-            url = '/saati/calc';
+            url = _contextPath+'/saati/calc';
         }
 
 
@@ -71,10 +71,14 @@ $(document).ready(function() {
             if(multi_mode){
                 console.log("COUNT "+$("#step_count").text());
                 console.log("STEp "+STEP);
-                if(STEP === STEP_COUNT)
+
+                if(STEP === STEP_COUNT)     {
+                    $('a[name=end]').show();
                     $('input[name=end]').show();
-                else
+                }
+                else{
                     $('input[name=next]').show();
+                }
             }
             $("#result_helper").show();
             //Если шаг - последний, то показываем кнопку "ОП", если нет - кнопку "далее"
@@ -118,11 +122,11 @@ $(document).ready(function() {
 
     $('input[name=next]').click(function() {
         _this = this;
-        $.post('/saati/multiple/next/', function(data){
+        $.post(_contextPath+'/saati/multiple/next/', function(data){
             if(data.error !== undefined) return error(data.error);
             console.log("step"+STEP);
             if(STEP === 1 && STEP !== data.step ) {
-                $.post('/saati/multiple/get_alternatives',  function(alt_data){
+                $.post(_contextPath+'/saati/multiple/get_alternatives',  function(alt_data){
                     if(alt_data.error !== undefined) return error(alt_data.error);
                     console.log("data recived");
                     drawLegend(alt_data);
@@ -149,7 +153,7 @@ $(document).ready(function() {
     $('input[name=general]').click(function(){
         _this = this;
 
-        $.post('/ajax/dss/calc_general/',{catId: CATEGORY}, function(data){
+        $.post(_contextPath+'/ajax/dss/calc_general/',{catId: CATEGORY}, function(data){
             if(data.error !== undefined) return error(data.error);
             fillVectors(data);
             fillGeneral(data);

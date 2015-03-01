@@ -15,22 +15,22 @@
                 <div class="col-6 col-sm-6 col-lg-6">
                     <h2> Простое сравнение альтернатив </h2>
                     <p>Простое сравнение от 2 до 8 альтернатив </p>
-                    <p><a class="btn btn-default" href="/saati/single" role="button">Использовать &raquo;</a></p>
+                    <p><a class="btn btn-default" href="<c:url value="/saati/single"/>" role="button">Использовать &raquo;</a></p>
                 </div><!--/span-->
                 <div class="col-6 col-sm-6 col-lg-6">
                     <h2> Анализ системы с неиерархичными критериями </h2>
                     <p>Сравнение альтернатив с учетом критериев </p>
-                     <p><a class="btn btn-default" href="/saati/multiple" role="button">Использовать &raquo;</a></p>
+                     <p><a class="btn btn-default" href="<c:url value="/saati/multiple"/>" role="button">Использовать &raquo;</a></p>
                 </div><!--/span-->
                 <div class="col-6 col-sm-6 col-lg-6">
                     <h2>Анализ с изменяющимися суждениями</h2>
                     <p>Сравнение альтернатив, с учетом изменения суждений в зависимости от заданного параметра </p>
-                    <p><a class="btn btn-default" href="/saati/dynamic" role="button">Использовать&raquo;</a></p>
+                    <p><a class="btn btn-default" href="<c:url value="/saati/dynamic"/>" role="button">Использовать&raquo;</a></p>
                 </div><!--/span-->
                 <div class="col-6 col-sm-6 col-lg-6">
                     <h2>Анализ системы с неиерархичнымикритериями и изменяющимися суждениями</h2>
                     <p>Сравнение альтернатив с учетом критериев и изменения суждений </p>
-                    <p><a class="btn btn-default" href="/saati/dynamic/multiple" role="button">Использовать  &raquo;</a></p>
+                    <p><a class="btn btn-default" href="<c:url value="/saati/dynamic/multiple"/>" role="button">Использовать  &raquo;</a></p>
                 </div><!--/span-->
             </div><!--/row-->
         </div><!--/span-->

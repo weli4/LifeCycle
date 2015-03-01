@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
-<link href="/resources/css/matrix-style.css" rel="stylesheet"/>
+<link href="<c:url value="/resources/css/matrix-style.css"/>" rel="stylesheet"/>
 
 <script type="text/javascript" src="<c:url value="/resources/js/dss.js"/>"> </script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.keyfilter.js"/>"> </script>
@@ -155,7 +155,7 @@
             <div id="placeholder" style="position:relative; width: auto; height: 600px; background-color: #ffffff">
             </div>
             <br/>
-            <a href="/saati/dynamic/multiple/reset" role="button" class="btn btn-success"> Начать заново</a>
+            <a href="<c:url value="/saati/dynamic/multiple/reset"/>" role="button" class="btn btn-success"> Начать заново</a>
         </div>
 
     </div>

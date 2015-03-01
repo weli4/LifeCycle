@@ -28,7 +28,7 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
+        <welcome-file>/WEB-INF/jsp/saati/main.jsp</welcome-file>
     </welcome-file-list>
 
 

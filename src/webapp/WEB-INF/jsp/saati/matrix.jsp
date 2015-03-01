@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
-<link href="/resources/css/matrix-style.css" rel="stylesheet"/>
+<link href="<c:url value="/resources/css/matrix-style.css"/>" rel="stylesheet"/>
 
 <script type="text/javascript" src="<c:url value="/resources/js/dss.js"/>"> </script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.keyfilter.js"/>"> </script>
@@ -39,7 +39,7 @@
 
             <div class="row"><input type="button" name="calc_matrix" value="Рассчитать" class="btn btn-default"/>
             <input type="button" name="next" value="Далее" style="display:none" class="btn btn-default"   />
-            <a href="/saati//multiple/result" role="button" name="end"  style="display:none" class="btn btn-success">Завершить</a></div>
+            <a href="<c:url value="/saati/multiple/result"/>" role="button"  name="end"  style="display:none" class="btn btn-success">Завершить</a></div>
             <div class="row">
                 <div id="matrix" class="col-lg-6" >
                     <form name="matrix">

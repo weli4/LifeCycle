@@ -6,7 +6,7 @@
 
     <groupId>LifeCycle</groupId>
     <artifactId>LifeCycle</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
     <properties>
         <java-version>1.7</java-version>

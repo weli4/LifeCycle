@@ -5,9 +5,9 @@
 Hello!
 <br/>
 
-<a href="/workspace" accesskey=""> Workspace </a>
+<a href="<c:url value="/workspace"/>" accesskey=""> Workspace </a>
 <br/>
-<a href="/saati" >Saati</a>
+<a href="<c:url value="/saati"/>" >Saati</a>
 
 
 

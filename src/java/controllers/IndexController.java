@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
     @RequestMapping("")
     public ModelAndView index(){
-
+        System.out.println("123231");
         return new ModelAndView("index");
 
     }

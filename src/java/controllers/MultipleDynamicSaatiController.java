@@ -290,10 +290,18 @@ public class MultipleDynamicSaatiController {
 
                 //умножаем полученные веса на коэффициент критерия
                 for(int j=0; j< alternativesLocalWeights[i].length; j++){
-                    alternativesLocalWeights[i][j] *= criteriesWeightArray[i];
-                    currentAltWeights[j] += alternativesLocalWeights[i][j];
-                }
+                    System.out.println("-----------------------------------------------------------------------------");
+                    System.out.println("вес альтернативы до умножения на глобальный критерий: " + alternativesLocalWeights[i][j]);
+                    System.out.println("глабоальный криитерий: " + criteriesWeightArray[i]);
 
+                    alternativesLocalWeights[i][j] *= criteriesWeightArray[i];
+
+                    System.out.println("вес альтернативы после умножения " + alternativesLocalWeights[i][j]);
+                    currentAltWeights[j] += alternativesLocalWeights[i][j];
+                    System.out.println("currentAltWeight "+currentAltWeights[j]);
+                    System.out.println("-----------------------------------------------------------------------------");
+                }
+                System.out.println("END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             }
 
             //Запоминаем значения для конкретного t
@@ -302,9 +310,6 @@ public class MultipleDynamicSaatiController {
         }
 
         ArrayList<GrafModel> list = new ArrayList<GrafModel>();
-//
-//        double[][] array = {{1,2},{5,7}};
-//        double[][] array2 = {{2,4},{6,8}};
         for(int i=0; i<alternativesLength; i++){
             ArrayList<double[]> tempGrafData = new ArrayList<double[]>();
             for(Double key : resultMap.keySet()){
@@ -316,8 +321,6 @@ public class MultipleDynamicSaatiController {
             list.add(new GrafModel(alternatives[i],tempGrafData.toArray(new double[tempGrafData.size()][])));
         }
 
-//        list.add(new GrafModel("Первый лабле",array));
-//        list.add(new GrafModel("Второй лабле",array2));
 
 
 

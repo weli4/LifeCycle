@@ -4,14 +4,16 @@
 <link href="/resources/css/matrix-style.css" rel="stylesheet"/>
 
 
-Результаты вычислений
-<br/>
-<ol id="legend_ol" >
-    <c:forEach var="i" begin="0" end="${alternativesNumber - 1}">
-        <li>Вес ${alternativesArray[i]} : <span> ${resultArray[i]}</span></li>
-    </c:forEach>
-</ol>
 
+<br/>
+<div class="jumbotron">
+    <h2> Результаты вычислений</h2>
+    <ol id="legend_ol" >
+        <c:forEach var="i" begin="0" end="${alternativesNumber - 1}">
+            <li>Вес ${alternativesArray[i]} : <span> ${resultArray[i]}</span></li>
+        </c:forEach>
+    </ol>
+</div>
 
 
 <%@ include file="/WEB-INF/jsp/footer.jsp" %>

@@ -142,12 +142,6 @@ public class DynamicSaatiController {
                 }
 
 
-//                for(int i= 0; i<input.length; i++){
-//                    System.out.println(Arrays.toString(input[i]));
-//
-//                }
-
-
                 SimpleSaatiSolver saatiSolver = new SimpleSaatiSolver(input);
                 double[] tempKoef = saatiSolver.getDoubleVector();
                 for(int j=0; j<matrixSize; j++){
