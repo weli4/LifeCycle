@@ -52,7 +52,7 @@ $(document).ready(function() {
             //ОС
             $('#attit_cons').text(data.attit_cons);
             //Проверка на согласованность матрицы
-            if(data.attit_cons > 0.1) { //Матрица не согласованна
+            if(data.attit_cons > 0.1) { //Матрица не согласована
 
 
                 //Подкрашиваем ОС
@@ -512,7 +512,7 @@ function findTrueValue(matrix_size, x, y) {
 
 }
 
-//Рассогласованна ли матрица? Проверка по методологии Саати.
+//Рассогласована ли матрица? Проверка по методологии Саати.
 function saatiMismatched(matrix) {
     //Приводим тип
     for(var i=0;i<3;i++)

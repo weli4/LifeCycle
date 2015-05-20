@@ -123,13 +123,13 @@
             </div>
                 <div id="helper" class="col-lg-6">
                     <div id="matrix_helper_no" class="matrix_result" style="display:none;color:red;" class="label label-default">
-                    Матрица не согласованна. Пересмотрите значения матрицы.
+                    Матрица не согласована. Пересмотрите значения матрицы.
                 </div>
                     <div id="error_comment" class="matrix_result" style="display:none;color:red;" class="label label-default">
 
                     </div>
                     <div id="matrix_helper_yes" class="matrix_result" style="display:none;color:green;" class="label label-default">
-                        Матрица согласованна.
+                        Матрица согласована.
                     </div>
                     <br />
                     <div id="vectors" class="matrix_result" style="display:none;" class="label label-default">

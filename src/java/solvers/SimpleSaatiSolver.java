@@ -20,6 +20,7 @@ public class SimpleSaatiSolver {
 
     public SimpleSaatiSolver(double[][] inputArray){
         this.matrix = MatrixUtils.createRealMatrix(inputArray);
+        System.out.println(matrix.toString());
         EigenDecomposition decompositionSolver = new EigenDecomposition(matrix);
         lambda = round(decompositionSolver.getRealEigenvalue(0));
         int matrixSize = matrix.getRowDimension();
@@ -60,7 +61,8 @@ public class SimpleSaatiSolver {
        StringBuffer resultStr = new StringBuffer();
         resultStr.append("[");
 
-        RealVector r =  decompositionSolver.getEigenvector(0).unitVector();
+        RealVector r = getRightVector(decompositionSolver);
+
 
         double sum = r.getL1Norm();
         double[] d = r.toArray();
@@ -79,8 +81,37 @@ public class SimpleSaatiSolver {
         resultStr.append("]");
 
 
-
+        System.out.println(resultStr.toString());
         return resultStr.toString();
+    }
+
+    private RealVector getRightVector(EigenDecomposition decompositionSolver) {
+
+        int dim = matrix.getRowDimension();
+        for(int i = 0; i < dim; i++){
+            double[] vector = decompositionSolver.getEigenvector(i).toArray();
+
+            if(vector[0] > 0){
+                for(int j=1; j < dim; j++){
+                    if(vector[j] < 0){
+                        break;
+                    }
+                    return  decompositionSolver.getEigenvector(i).unitVector();
+                }
+            }else{
+                for(int j=1; j < dim; j++){
+                    if(vector[j] > 0){
+                        break;
+                    }
+                    return  decompositionSolver.getEigenvector(i).unitVector();
+                }
+            }
+        }
+
+
+
+        return null;  //To change body of created methods use File | Settings | File Templates.\
+
     }
 
     public double[] getDoubleVector(){

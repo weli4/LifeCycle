@@ -4,28 +4,30 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" name="Default" comment="Работает многоуровневая динамика. Переработаны стили.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/controllers/DynamicSaatiController.java" afterPath="$PROJECT_DIR$/src/java/controllers/DynamicSaatiController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/controllers/IndexController.java" afterPath="$PROJECT_DIR$/src/java/controllers/IndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/LifeCycle_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/LifeCycle_war.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/controllers/MultipleDynamicSaatiController.java" afterPath="$PROJECT_DIR$/src/java/controllers/MultipleDynamicSaatiController.java" />
+    <list default="true" id="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" name="Default" comment="Много багфикса">
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\entity\AbstractEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\entity\Model.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\entity\Process.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\entity\Project.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\entity\Stage.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\entity\User.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\persist\AbstractDao.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\persist\Dao.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\persist\ProcessDao.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\persist\ProjectDao.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\persist\StageDao.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\service\TenantHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\java\LifeCycle\src\java\util\HibernateUtil.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/solvers/SimpleSaatiSolver.java" afterPath="$PROJECT_DIR$/src/java/solvers/SimpleSaatiSolver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/resources/js/dss.js" afterPath="$PROJECT_DIR$/src/webapp/resources/js/dss.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/resources/js/dynamic-saati.js" afterPath="$PROJECT_DIR$/src/webapp/resources/js/dynamic-saati.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/dynamic_matrix.jsp" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/dynamic_matrix.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/header.jsp" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/header.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/index.jsp" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/main.jsp" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/main.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/matrix.jsp" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/matrix.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/set-limits.jsp" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/set-limits.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/show-result.jsp" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/show-result.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/workspace.jsp" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/workspace.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LifeCycle.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1425208330411" ignored="false" />
+    <file path="/Dummy.txt" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1432140199370" ignored="false" />
     <file path="D:/java/diplom/maven_test/maven_test/.idea/workspace.xml" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1388427203276" ignored="false" />
     <file path="/pom.xml" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1388419954440" ignored="false" />
     <file path="/web.xml" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1404134520677" ignored="false" />
@@ -45,8 +47,8 @@
     <file path="/matrix-style.css" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1398493721349" ignored="false" />
     <file path="/dss.js" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1424098322637" ignored="false" />
     <file path="/asd.js" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1392313647033" ignored="false" />
-    <file path="/SimpleSaatiSolver.java" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1402852190842" ignored="false" />
-    <file path="/a.dummy" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1424011525692" ignored="false" />
+    <file path="/SimpleSaatiSolver.java" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1432142362918" ignored="false" />
+    <file path="/a.dummy" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1432140486911" ignored="false" />
     <file path="/dynamic_matrix.jsp" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1402918350664" ignored="false" />
     <file path="/dynamic-saati.js" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1424010570187" ignored="false" />
     <file path="/show-result.jsp" changelist="ed2c7d0e-62ea-4dfc-975c-45cbf53f7756" time="1424098393693" ignored="false" />
@@ -85,7 +87,6 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
@@ -121,6 +122,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -133,16 +135,7 @@
       <file leaf-file-name="dss.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/webapp/resources/js/dss.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="44" selection-start="2620" selection-end="2620" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MultipleDynamicSaatiController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/controllers/MultipleDynamicSaatiController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="326" column="38" selection-start="12722" selection-end="12722" vertical-scroll-proportion="0.0">
+            <state line="54" column="62" selection-start="1678" selection-end="1678" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -151,7 +144,7 @@
       <file leaf-file-name="dynamic_matrix.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/dynamic_matrix.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="68" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0">
+            <state line="131" column="41" selection-start="5988" selection-end="5988" vertical-scroll-proportion="-6.5">
               <folding />
             </state>
           </provider>
@@ -160,34 +153,16 @@
       <file leaf-file-name="matrix.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/matrix.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="56" selection-start="996" selection-end="996" vertical-scroll-proportion="0.0">
+            <state line="86" column="37" selection-start="4338" selection-end="4338" vertical-scroll-proportion="-6.5">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dynamic-saati.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/webapp/resources/js/dynamic-saati.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="19" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="51" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show-result.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show-result.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/show-result.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="93" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0624235">
+            <state line="11" column="31" selection-start="387" selection-end="387" vertical-scroll-proportion="-7.1923075">
               <folding />
             </state>
           </provider>
@@ -202,19 +177,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TenantHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/service/TenantHelper.java">
+      <file leaf-file-name="WorkspaceController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/controllers/WorkspaceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="28" selection-start="656" selection-end="656" vertical-scroll-proportion="0.0">
+            <state line="15" column="35" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="alt_choose.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/alt_choose.jsp">
+      <file leaf-file-name="SimpleSaatiSolver.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/java/solvers/SimpleSaatiSolver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="301" selection-end="324" vertical-scroll-proportion="0.0">
+            <state line="54" column="28" selection-start="1984" selection-end="1984" vertical-scroll-proportion="0.6642729">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SaatiController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/controllers/SaatiController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="37" selection-start="1055" selection-end="1055" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="51" selection-start="359" selection-end="359" vertical-scroll-proportion="-9.153846">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/main.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="111" selection-start="495" selection-end="495" vertical-scroll-proportion="-8.5">
               <folding />
             </state>
           </provider>
@@ -250,22 +252,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/java/solvers/SimpleSaatiSolver.java" />
         <option value="$PROJECT_DIR$/src/java/controllers/MultipleSaatiController.java" />
         <option value="$PROJECT_DIR$/src/java/controllers/DynamicSaatiController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/java/controllers/MultipleDynamicSaatiController.java" />
         <option value="$PROJECT_DIR$/src/java/controllers/SaatiController.java" />
-        <option value="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/main.jsp" />
         <option value="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/index.jsp" />
-        <option value="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/dynamic_matrix.jsp" />
         <option value="$PROJECT_DIR$/src/java/controllers/IndexController.java" />
         <option value="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/header.jsp" />
         <option value="$PROJECT_DIR$/src/webapp/resources/js/dynamic-saati.js" />
-        <option value="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/matrix.jsp" />
-        <option value="$PROJECT_DIR$/src/webapp/resources/js/dss.js" />
         <option value="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/show-result.jsp" />
+        <option value="$PROJECT_DIR$/src/webapp/resources/js/dss.js" />
+        <option value="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/dynamic_matrix.jsp" />
+        <option value="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/matrix.jsp" />
+        <option value="$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/main.jsp" />
+        <option value="$PROJECT_DIR$/src/java/solvers/SimpleSaatiSolver.java" />
       </list>
     </option>
   </component>
@@ -345,6 +347,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -375,188 +378,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="saati" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -599,32 +420,6 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LifeCycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -650,18 +445,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="231" />
-    <property name="project.structure.proportion" value="0.15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="233" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="234" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="D:/java/LifePerfomance/LifePerfomance" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="236" />
@@ -679,8 +473,8 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="vcs.Git" />
-    <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="project.structure.side.proportion" value="0.3962704" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -852,7 +646,11 @@
       <created>1403026271081</created>
       <updated>1403026271081</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Много багфикса">
+      <created>1425208365182</created>
+      <updated>1425208365182</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -877,11 +675,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298731" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.67128026" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298731" sideWeight="0.49509203" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.67128026" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2675894" sideWeight="0.49509203" order="3" side_tool="false" content_ui="tabs" />
@@ -890,21 +689,20 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.67128026" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3217993" sideWeight="0.497552" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871974" sideWeight="0.49265605" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19079755" sideWeight="0.21914648" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.249694" sideWeight="0.67128026" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.67128026" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298731" sideWeight="0.497552" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2264382" sideWeight="0.6724337" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32756633" sideWeight="0.9987805" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2264382" sideWeight="0.6724337" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32756633" sideWeight="0.9987805" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298731" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298731" sideWeight="0.49509203" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871974" sideWeight="0.49265605" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39907727" sideWeight="0.49754602" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -946,7 +744,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Работает многоуровневая динамика. Переработаны стили." />
+    <option name="LAST_COMMIT_MESSAGE" value="Много багфикса" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -965,6 +763,7 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;LifeCycle.iml&#10;&#9;pom.xml&#10;&#9;src/webapp/WEB-INF/web.xml&#10;" />
     <MESSAGE value="Много-много всякого. В основном саати динамический и пошаговый&#10;" />
     <MESSAGE value="Работает многоуровневая динамика. Переработаны стили." />
+    <MESSAGE value="Много багфикса" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1023,56 +822,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/webapp/resources/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="27" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="51" selection-start="2133" selection-end="2133" vertical-scroll-proportion="-21.846153">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/webapp/resources/js/saati.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="32" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/controllers/SaatiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="16" selection-start="2076" selection-end="2076" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/controllers/DynamicSaatiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="53" selection-start="2852" selection-end="2852" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controllers/MultipleSaatiController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="59" selection-start="5898" selection-end="5898" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="159" column="59" selection-start="5898" selection-end="5898" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/alt_choose.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="301" selection-end="324" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="51" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="8" column="0" selection-start="301" selection-end="324" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/webapp/resources/js/dynamic-saati.js">
@@ -1089,27 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/dynamic_matrix.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="68" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/matrix.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="56" selection-start="996" selection-end="996" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/webapp/resources/js/dss.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="44" selection-start="2620" selection-end="2620" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="16" selection-start="880" selection-end="880" vertical-scroll-proportion="0.0">
@@ -1117,16 +853,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/service/TenantHelper.java">
+    <entry file="file://D:/New_Trash/openCV/opencv/sources/samples/java/eclipse/HelloCV/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="28" selection-start="656" selection-end="656" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="10" column="75" selection-start="368" selection-end="368" vertical-scroll-proportion="0.16132858" />
+      </provider>
+    </entry>
+    <entry file="file://D:/New_Trash/openCV/opencv/sources/samples/java/sbt/src/main/java/DetectFaceDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="15" selection-start="1645" selection-end="1645" vertical-scroll-proportion="0.7652068" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/show-result.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="93" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0624235">
+        <state line="11" column="31" selection-start="387" selection-end="387" vertical-scroll-proportion="-7.1923075">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/webapp/resources/js/dss.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="62" selection-start="1678" selection-end="1678" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/dynamic_matrix.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="131" column="41" selection-start="5988" selection-end="5988" vertical-scroll-proportion="-6.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/matrix.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="37" selection-start="4338" selection-end="4338" vertical-scroll-proportion="-6.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/controllers/WorkspaceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="35" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="51" selection-start="359" selection-end="359" vertical-scroll-proportion="-9.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/jsp/saati/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="111" selection-start="495" selection-end="495" vertical-scroll-proportion="-8.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/controllers/SaatiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="37" selection-start="1055" selection-end="1055" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/solvers/SimpleSaatiSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="28" selection-start="1984" selection-end="1984" vertical-scroll-proportion="0.6642729">
           <folding />
         </state>
       </provider>

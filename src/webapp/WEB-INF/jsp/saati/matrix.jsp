@@ -81,10 +81,10 @@
                 </ol>
                 <br />
                 <div id="matrix_helper_no" class="matrix_result" style="display:none;color:red;">
-                    Матрица не согласованна. Пересмотрите значения матрицы.
+                    Матрица не согласована. Пересмотрите значения матрицы.
                 </div>
                 <div id="matrix_helper_yes" class="matrix_result" style="display:none;color:green;">
-                    Матрица согласованна.
+                    Матрица согласована.
                 </div>
                 <br />
                 <div id="vectors" class="matrix_result" style="display:none;">
